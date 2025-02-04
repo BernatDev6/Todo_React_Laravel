@@ -1,0 +1,74 @@
+/* Contenedor del Dashboard */
+.dashboard-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Contenedor principal de las notas */
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-medium) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.note-item {
+  background-color: var(--bg-secondary-color);
+  padding: var(--spacing-large);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note-item:hover {
+  box-shadow: var(--box-shadow);
+}
+
+/* Título de la nota */
+.note-title {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-small);
+}
+
+/* Contenido de la nota */
+.note-content {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary-color);
+}
+
+/* Estilo del label y select */
+.note-item label {
+  display: block;
+  font-size: var(--font-size-small);
+  color: var(--text-secondary-color);
+}
+
+.note-item select {
+  padding: var(--spacing-small);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-color: var(--bg-card-color);
+}
+
+/* Estados de las notas */
+.note-item.pendiente {
+  border-left: var(--spacing-small) solid var(--color-pending);
+  background-color: var(--card-pending-bg);
+}
+
+.note-item.activa {
+  border-left: var(--spacing-small) solid var(--color-active);
+  background-color: var(--card-active-bg);
+}
+
+.note-item.completada {
+  border-left: var(--spacing-small) solid var(--color-success);
+  background-color: var(--card-success-bg);
+  text-decoration: line-through;
+  opacity: 0.8;
+}

@@ -6,9 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject; 
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject 
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -65,5 +65,19 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return []; // Por defecto no añade claims personalizados 
+    }
+
+    /**
+     * Define una relación de uno a muchos entre el modelo User y Note.
+     * Un usuario puede tener varias notas asociadas.
+     */
+    public function notes()
+    {
+        // La función hasMany establece que el modelo User puede tener muchas instancias de Note.
+        // Laravel asume automáticamente lo siguiente:
+        // - La tabla relacionada es 'notes' (plural del modelo Note).
+        // - La clave foránea es 'user_id' en la tabla 'notes'.
+        // - La clave primaria del modelo User es 'id'.
+        return $this->hasMany(Note::class);
     }
 }

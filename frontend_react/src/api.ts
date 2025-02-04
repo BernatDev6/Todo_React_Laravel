@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api';
+export const API_URL = 'http://localhost:8000/api';
 
 interface LoginResponse {
     token: string;
@@ -82,6 +82,46 @@ export const getUserData = async (token: string) => {
     } catch (error) {
         throw new Error('Error al obtener los datos del usuario');
     }
+};
+
+/** 
+ * Obtiene las notas del usuario autenticado. 
+ */
+export const getUserNotes = async (token: string) => {
+    try {
+        const response = await axios.get(`${API_URL}/notes`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('Error al obtener los datos del usuario');
+    }
+};
+
+/** 
+ * Creando la nota del usuario autenticado. 
+ */
+export const createNote = async (token: string, note: { title: string, content: string }) => {
+    const { data } = await axios.post(`${API_URL}/notes`, note, {
+        headers: { Authorization: `Bearer ${token}` },
+    });
+    return data;
+};
+
+export const updateNoteStatus = async (noteId: number, status: 'pendiente' | 'activa' | 'completada') => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('No token found');
+
+    const response = await axios.put(
+        `${API_URL}/notes/${noteId}`,
+        { status },
+        {
+            headers: { Authorization: `Bearer ${token}` },
+        }
+    );
+    return response.data;
 };
 
 /** 

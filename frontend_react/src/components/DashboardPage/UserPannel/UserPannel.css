@@ -1,0 +1,20 @@
+.user-pannel {
+    background-color: var(--bg-hover-color);
+    padding: var(--spacing-xlarge);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.user-pannel-title {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-medium);
+}
+
+.user-pannel-content {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary-color);
+    line-height: 1.5;
+}

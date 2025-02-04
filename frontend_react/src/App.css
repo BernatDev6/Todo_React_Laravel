@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Colores principales */
+    --color-active: #007bff;
+    --color-success: #28a745;
+    --color-pending: #ffc107;
+    --color-danger: #dc3545;
+
+    /* Fondo */
+    --bg-color: #fcfcfc;
+    --bg-secondary-color: #edeff1;
+    --bg-card-color: #fcfcfc;
+    --bg-hover-color: #f0f0f0;
+
+    /* Colores de texto */
+    --text-color: #212529;
+    --text-secondary-color: #6c757d;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #e6ffe6;
+    --card-pending-bg: #fff3cd;
+    --card-active-bg: #d7d8f8;
+
+    /* Bordes */
+    --border-color: #dee2e6;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Tipografía */
+    --font-size-small: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-large: 1.25rem;
+
+    /* Radius */
+    --border-radius: 0.5rem;
+
+    /* Espaciados */
+    --spacing-small: 0.4rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 1.5rem;
+    --spacing-xlarge: 2rem;
+
+}
+
+[data-theme="dark"] {
+    /* Colores principales */
+    --color-active: #4dabf7;
+    --color-success: #2ed573;
+    --color-pending: #ffa502;
+    --color-danger: #ff6b6b;
+
+    /* Fondo */
+    --bg-color: #121212;
+    --bg-secondary-color: #1c1c1c;
+    --bg-card-color: #1f1f1f;
+    --bg-hover-color: #292929;
+
+    /* Colores de texto */
+    --text-color: #f1f1f1;
+    --text-secondary-color: #ced4da;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #1f3520;
+    --card-pending-bg: #3d3310;
+    --card-active-bg: #22223f;
+
+    /* Bordes */
+    --border-color: #343a40;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
