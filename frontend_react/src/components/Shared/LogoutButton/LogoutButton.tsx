@@ -10,7 +10,7 @@ export const LogoutButton: React.FC = () => {
         try {
             await logout();
             localStorage.removeItem('token');
-            navigate('/login');
+            navigate('/');
         } catch (error) {
             alert('Error al cerrar sesión');
         }

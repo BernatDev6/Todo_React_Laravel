@@ -2,18 +2,31 @@
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
 }
 
 /* Hero Section */
 .hero {
     display: flex;
-    justify-content: space-between;
+    min-height: 600px;
+    justify-content: center;
     align-items: center;
-    background-color: var(--color-active);
-    color: white;
+    gap: var(--spacing-medium);
+    background-image: url(https://picsum.photos/2000/600/);
+    background-position: center;
+    background-size: cover;
+    padding: var(--spacing-xlarge) 0;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    background-color: rgba(var(--bg-color-rgb), .7);
+    border: 1px solid var(--bg-secondary-color);
+    border-radius: var(--border-radius);
     padding: var(--spacing-xlarge);
-    text-align: left;
+    gap: var(--spacing-medium);
+    width: 80%;
 }
 
 .hero-text h1 {
@@ -28,6 +41,7 @@
 
 .cta-button {
     background-color: var(--color-success);
+    align-self: flex-start;
     color: white;
     padding: var(--spacing-small) var(--spacing-medium);
     border-radius: var(--border-radius);

@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../../api';
 
 export const LoginPage: React.FC = () => {
@@ -52,6 +52,8 @@ export const LoginPage: React.FC = () => {
                     />
                 </div>
                 <button type="submit" className="submit-btn">Login</button>
+                <Link to="/register">Register</Link>
+                <Link to="/">Landing</Link>
             </form>
         </div>
     );

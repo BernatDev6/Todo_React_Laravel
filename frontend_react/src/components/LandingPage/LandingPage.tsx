@@ -6,18 +6,14 @@ import "./LandingPage.css";
 export const LandingPage: React.FC = () => {
   return (
     <div className="landing-page">
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-text">
           <h1>Crea tus Notas para Organizar</h1>
-          <a href="#features" className="cta-button">Descubre Más</a>
-        </div>
-        <div className="hero-image">
-          <img src="assets/images/hero.jpg" alt="Eventos" />
+          <p>Organiza tu vida con facilidad. Crea, guarda y accede a tus notas en cualquier momento. Tu espacio personal para todo lo que necesitas recordar.</p>
+          <Link to="/dashboard" className="cta-button">Dashboard</Link>
         </div>
       </section>
 
-      {/* Features Section */}
       <section id="features" className="features">
         <div className="feature-item">
           <h2>Gestión de Eventos</h2>
@@ -31,13 +27,6 @@ export const LandingPage: React.FC = () => {
           <h2>Participación Fácil</h2>
           <p>Únete a eventos con solo un clic, mantente al tanto de las actividades y comunícate con otros participantes.</p>
         </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="cta-section">
-        <h2>¡Únete Ahora y Empieza a Organizar!</h2>
-        <Link to="/login" className="cta-button">Login</Link>
-        <Link to="/register" className="cta-button">Register</Link>
       </section>
     </div>
   );

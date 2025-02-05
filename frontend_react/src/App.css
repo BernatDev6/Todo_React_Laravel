@@ -12,6 +12,7 @@
 
     /* Fondo */
     --bg-color: #fcfcfc;
+    --bg-color-rgb: 252, 252, 252;
     --bg-secondary-color: #edeff1;
     --bg-card-color: #fcfcfc;
     --bg-hover-color: #f0f0f0;
@@ -56,6 +57,7 @@
 
     /* Fondo */
     --bg-color: #121212;
+    --bg-color-rgb: 18, 18, 18;
     --bg-secondary-color: #1c1c1c;
     --bg-card-color: #1f1f1f;
     --bg-hover-color: #292929;
