@@ -28,9 +28,7 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
 
   return (
     <>
-      <button className="create-note-btn" onClick={() => setShowModal(true)}>
-        Crear Nota
-      </button>
+      <button className="create-note-btn" onClick={() => setShowModal(true)} title="Add Note">+</button>
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">

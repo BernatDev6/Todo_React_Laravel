@@ -1,0 +1,92 @@
+.list-note-container {
+  background-color: var(--bg-secondary-color);
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius);
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.note-item {
+  position: relative;
+  background-color: var(--bg-color);
+  padding: var(--spacing-large);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.note-item:hover {
+  transform: translateX(-10px);
+}
+
+.note-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: transparent;
+  z-index: 0;
+  transition: width 0.4s ease-in-out;
+  border-radius: var(--border-radius);
+}
+
+.note-item:hover::before {
+  width: 100%;
+}
+
+.note-title {
+  position: relative;
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-small);
+  z-index: 1;
+}
+
+.note-content,
+.note-status {
+  position: relative;
+  z-index: 1;
+}
+
+.note-content {
+  max-height: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estados de las notas */
+.note-item.pendiente {
+  box-shadow: inset var(--spacing-small) 0 0 0 var(--card-pending-bg);
+}
+
+
+.note-item.activa {
+  box-shadow: inset var(--spacing-small) 0 0 0 var(--card-active-bg);
+}
+
+.note-item.completada {
+  box-shadow: inset var(--spacing-small) 0 0 0 var(--card-success-bg);
+}
+
+.note-item.pendiente::before {
+  background: linear-gradient(90deg, var(--card-pending-bg) 70%, var(--bg-color) 100%);
+}
+
+.note-item.activa::before {
+  background: linear-gradient(90deg, var(--card-active-bg) 70%, var(--bg-color) 100%);
+}
+
+.note-item.completada::before {
+  background: linear-gradient(90deg, var(--card-success-bg) 70%, var(--bg-color) 100%);
+}

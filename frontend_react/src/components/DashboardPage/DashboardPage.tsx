@@ -4,6 +4,8 @@ import { getUserData, getUserNotes, updateNoteStatus } from '../../api';
 import './DashboardPage.css'
 import { CreateNote } from './CreateNoteModal/CreateNote';
 import { UserPannel } from './UserPannel/UserPannel';
+import { ListNote } from './ShowNotes/ListNote/ListNote';
+import { CardNote } from './ShowNotes/CardNote/CardNote';
 
 interface User {
   id: number;
@@ -21,6 +23,7 @@ interface Note {
 export const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
+  const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
   const navigate = useNavigate();
 
   const fetchUserData = async () => {
@@ -73,28 +76,29 @@ export const DashboardPage: React.FC = () => {
       {/* Componente modal para crear nota */}
       <CreateNote setNotes={setNotes} notes={notes} />
 
+      {/* Botones para cambiar de vista */}
+      <div className="view-toggle-buttons">
+        <button
+          className={`toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
+          onClick={() => setViewMode('list')}
+        >
+          Lista
+        </button>
+        <button
+          className={`toggle-btn ${viewMode === 'card' ? 'active' : ''}`}
+          onClick={() => setViewMode('card')}
+        >
+          Cards
+        </button>
+      </div>
+
       {/* Listado de Notas del Usuario */}
-      {notes.length > 0 ? (
-        <ul className="notes-list">
-          {notes.map((note) => (
-            <li key={note.id} className={`note-item ${note.status}`}>
-              <h3 className="note-title">{note.id}. {note.title}</h3>
-              <p className="note-content">{note.content}</p>
-              <label>Estado:</label>
-              <select
-                value={note.status}
-                onChange={(e) => handleStatusChange(note.id, e.target.value as 'pendiente' | 'activa' | 'completada')}
-              >
-                <option value="pendiente">Pending</option>
-                <option value="activa">Active</option>
-                <option value="completada">Done</option>
-              </select>
-            </li>
-          ))}
-        </ul>
+      {viewMode === 'list' ? (
+        <ListNote notes={notes} />
       ) : (
-        <p className="charge-notes-message">Charging...</p>
+        <CardNote notes={notes} />
       )}
     </div>
+
   );
 };

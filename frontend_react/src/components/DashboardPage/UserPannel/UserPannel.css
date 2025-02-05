@@ -1,5 +1,5 @@
 .user-pannel {
-    background-color: var(--bg-hover-color);
+    background-color: var(--bg-secondary-color);
     padding: var(--spacing-xlarge);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);

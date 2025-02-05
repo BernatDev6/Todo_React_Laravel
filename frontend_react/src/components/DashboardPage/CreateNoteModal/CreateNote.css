@@ -1,13 +1,20 @@
 /* Button */
 .create-note-btn {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xlarge);
   color: white;
-  background-color: #007bff;
+  background-color: var(--color-active);
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
+  position: fixed;
+  bottom: var(--spacing-medium);
+  right: var(--spacing-medium);
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 10;
 }
 
 .create-note-btn:hover {
@@ -29,35 +36,36 @@
 }
 
 .modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
+  background: var(--bg-color);
+  padding: var(--spacing-xlarge);
+  border-radius: var(--border-radius);
   max-width: 400px;
   width: 100%;
   text-align: center;
+  box-shadow: var(--box-shadow);
 }
 
 .modal-content h2 {
-  margin-bottom: 1rem;
-  color: #333;
+  margin-bottom: var(--spacing-medium);
+  color: var(--text-color);
 }
 
 .modal-content label {
   display: block;
   text-align: left;
-  margin: 0.8rem 0 0.4rem;
+  margin: var(--spacing-small) 0 var(--spacing-small);
   font-weight: bold;
-  color: #555;
+  color: var(--text-secondary-color);
 }
 
 .modal-content input,
 .modal-content textarea {
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-medium);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
 }
 
 .modal-content textarea {
@@ -68,20 +76,20 @@
 .modal-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--spacing-small);
 }
 
 .modal-buttons button {
-  padding: 0.8rem 1.5rem;
+  padding: var(--spacing-small) var(--spacing-medium);
   border: none;
   color: white;
-  font-size: 1rem;
-  border-radius: 4px;
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
 .modal-buttons button[type="submit"] {
-  background-color: #28a745;
+  background-color: var(--color-success);
 }
 
 .modal-buttons button[type="submit"]:hover {
@@ -89,7 +97,7 @@
 }
 
 .modal-buttons button[type="button"] {
-  background-color: #dc3545;
+  background-color: var(--color-danger);
 }
 
 .modal-buttons button[type="button"]:hover {
