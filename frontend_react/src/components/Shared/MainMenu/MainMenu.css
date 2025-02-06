@@ -1,0 +1,8 @@
+.main-menu {
+    background-color: var(--bg-color);
+}
+
+.menu {
+    display: flex;
+    gap: var(--spacing-medium);
+}

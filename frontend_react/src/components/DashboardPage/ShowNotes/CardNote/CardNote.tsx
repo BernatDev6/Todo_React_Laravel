@@ -19,9 +19,9 @@ export const CardNote: React.FC<CardNoteProps> = ({ notes }) => {
                 notes.map((note) => (
                     <article className={`note-card ${note.status}`}>
                         <div className="note-card-content">
-                            <h3>{note.title}</h3>
+                            <h3 className="card-title">{note.title}</h3>
                             <p className="card-content">{note.content}</p>
-                            <p>{note.status}</p>
+                            <p className="card-status">{note.status}</p>
                         </div>
                         <div className="note-card-overlay"></div>
                     </article>

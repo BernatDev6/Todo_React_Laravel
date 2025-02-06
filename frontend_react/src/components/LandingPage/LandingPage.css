@@ -4,70 +4,17 @@
     padding: 0;
 }
 
-/* Hero Section */
-.hero {
-    display: flex;
-    min-height: 600px;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-medium);
-    background-image: url(https://picsum.photos/2000/600/);
-    background-position: center;
-    background-size: cover;
-    padding: var(--spacing-xlarge) 0;
-}
-
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    color: var(--text-color);
-    background-color: rgba(var(--bg-color-rgb), .7);
-    border: 1px solid var(--bg-secondary-color);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-xlarge);
-    gap: var(--spacing-medium);
-    width: 80%;
-}
-
-.hero-text h1 {
-    font-size: var(--font-size-xlarge);
-    margin-bottom: var(--spacing-medium);
-}
-
-.hero-text p {
-    font-size: var(--font-size-base);
-    margin-bottom: var(--spacing-medium);
-}
-
-.cta-button {
-    background-color: var(--color-success);
-    align-self: flex-start;
-    color: white;
-    padding: var(--spacing-small) var(--spacing-medium);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-size: var(--font-size-base);
-}
-
-.cta-button:hover {
-    background-color: var(--color-success);
-}
-
-.hero-image img {
-    max-width: 50%;
-    border-radius: var(--border-radius);
-}
-
 /* Features Section */
 .features {
     display: flex;
     justify-content: space-between;
     padding: var(--spacing-xlarge);
     background-color: var(--bg-secondary-color);
+    color: var(--text-secondary-color);
 }
 
 .feature-item {
-    background-color: var(--bg-card-color);
+    background-color: var(--bg-color);
     padding: var(--spacing-medium);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -82,17 +29,4 @@
 
 .feature-item p {
     font-size: var(--font-size-base);
-}
-
-/* Call to Action Section */
-.cta-section {
-    background-color: var(--color-active);
-    color: white;
-    text-align: center;
-    padding: var(--spacing-xlarge);
-}
-
-.cta-section h2 {
-    font-size: var(--font-size-large);
-    margin-bottom: var(--spacing-medium);
 }

@@ -14,6 +14,9 @@
 
 .note-item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background-color: var(--bg-color);
   padding: var(--spacing-large);
   border: 1px solid var(--border-color);
@@ -43,7 +46,7 @@
   width: 100%;
 }
 
-.note-title {
+.item-title {
   position: relative;
   font-size: var(--font-size-large);
   font-weight: bold;
@@ -52,10 +55,20 @@
   z-index: 1;
 }
 
-.note-content,
-.note-status {
+.item-content {
   position: relative;
   z-index: 1;
+  color: var(--text-secondary-color);
+}
+
+.item-status {
+  position: relative;
+  z-index: 1;
+  background-color: var(--text-secondary-color);
+  color: var(--bg-secondary-color);
+  padding: var(--spacing-small);
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing-small);
 }
 
 .note-content {

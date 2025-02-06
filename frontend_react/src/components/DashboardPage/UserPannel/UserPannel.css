@@ -43,10 +43,15 @@
 }
 
 .redirect-btn-landing {
-    background-color: var(--color-active);
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--text-color);
     padding: var(--spacing-small) var(--spacing-medium);
     border-radius: var(--border-radius);
     margin-right: var(--spacing-medium);
     text-decoration: none;
+    transition: opacity .3s ease;
+}
+
+.redirect-btn-landing:hover {
+    opacity: .7;
 }

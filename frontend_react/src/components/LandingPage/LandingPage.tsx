@@ -1,19 +1,14 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import "./LandingPage.css";
+import { HeroSection } from "./HeroSection/HeroSection";
+import { MainMenu } from "../Shared/MainMenu/MainMenu";
 
 
 export const LandingPage: React.FC = () => {
   return (
     <div className="landing-page">
-      <section className="hero">
-        <div className="hero-text">
-          <h1>Crea tus Notas para Organizar</h1>
-          <p>Organiza tu vida con facilidad. Crea, guarda y accede a tus notas en cualquier momento. Tu espacio personal para todo lo que necesitas recordar.</p>
-          <Link to="/dashboard" className="cta-button">Dashboard</Link>
-        </div>
-      </section>
-
+      <MainMenu />
+      <HeroSection />
       <section id="features" className="features">
         <div className="feature-item">
           <h2>Gestión de Eventos</h2>

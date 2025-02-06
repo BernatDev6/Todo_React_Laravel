@@ -19,9 +19,9 @@ export const ListNote: React.FC<ListNoteProps> = ({ notes }) => {
         <ul className="notes-list">
           {notes.map((note) => (
             <li key={note.id} className={`note-item ${note.status}`}>
-              <h3 className="note-title">{note.title}</h3>
-              <p className="note-content">{note.content}</p>
-              <p className="note-status">{note.status}</p>
+              <h3 className="item-title">{note.title}</h3>
+              <p className="item-content">{note.content}</p>
+              <p className="item-status">{note.status}</p>
             </li>
           ))}
         </ul>

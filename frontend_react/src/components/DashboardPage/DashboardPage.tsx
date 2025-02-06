@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserData, getUserNotes, updateNoteStatus } from '../../api';
+import { getUserData, getUserNotes } from '../../api';
 import './DashboardPage.css'
 import { CreateNote } from './CreateNoteModal/CreateNote';
 import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
+import { MainMenu } from '../Shared/MainMenu/MainMenu';
 
 interface User {
   id: number;
@@ -47,19 +48,6 @@ export const DashboardPage: React.FC = () => {
     }
   };
 
-  const handleStatusChange = async (noteId: number, newStatus: 'pendiente' | 'activa' | 'completada') => {
-    try {
-      await updateNoteStatus(noteId, newStatus);
-      setNotes((prevNotes) =>
-        prevNotes.map((note) =>
-          note.id === noteId ? { ...note, status: newStatus } : note
-        )
-      );
-    } catch (error) {
-      alert('Error al actualizar el estado de la nota');
-    }
-  };
-
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -70,6 +58,7 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div className="dashboard-container">
+      <MainMenu />
       {/* Pannel de informacion del usuario */}
       <UserPannel user={user} />
 
@@ -79,13 +68,13 @@ export const DashboardPage: React.FC = () => {
       {/* Botones para cambiar de vista */}
       <div className="view-toggle-buttons">
         <button
-          className={`toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
+          className={`button toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
           onClick={() => setViewMode('list')}
         >
           Lista
         </button>
         <button
-          className={`toggle-btn ${viewMode === 'card' ? 'active' : ''}`}
+          className={`button toggle-btn ${viewMode === 'card' ? 'active' : ''}`}
           onClick={() => setViewMode('card')}
         >
           Cards

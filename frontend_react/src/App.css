@@ -5,10 +5,11 @@
 
 :root {
     /* Colores principales */
+    --color-primary: #45e3ff;
     --color-active: #007bff;
     --color-success: #28a745;
     --color-pending: #ffc107;
-    --color-danger: #dc3545;
+    --color-danger: #ff6272;
 
     /* Fondo */
     --bg-color: #fcfcfc;
@@ -50,14 +51,15 @@
 
 [data-theme="dark"] {
     /* Colores principales */
+    --color-primary: #00b8d8;
     --color-active: #4dabf7;
     --color-success: #2ed573;
     --color-pending: #ffa502;
     --color-danger: #ff6b6b;
 
     /* Fondo */
-    --bg-color: #121212;
-    --bg-color-rgb: 18, 18, 18;
+    --bg-color: #2c2c2c;
+    --bg-color-rgb: 16, 16, 16;
     --bg-secondary-color: #1c1c1c;
     --bg-card-color: #1f1f1f;
     --bg-hover-color: #292929;
@@ -67,13 +69,30 @@
     --text-secondary-color: #ced4da;
 
     /* Colores para cards según estado */
-    --card-success-bg: #1f3520;
-    --card-pending-bg: #3d3310;
-    --card-active-bg: #22223f;
+    --card-success-bg: #305232;
+    --card-pending-bg: #72601f;
+    --card-active-bg: #414177;
 
     /* Bordes */
     --border-color: #343a40;
 
     /* Sombras */
     --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+h1 {
+    font-size: var(--font-size-xlarge);
+}
+
+h1, h2 {
+    color: var(--color-primary);
+}
+
+.button {
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
 }

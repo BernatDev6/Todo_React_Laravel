@@ -30,7 +30,7 @@ export const UserPannel: React.FC<UserPannelProps> = ({ user }) => {
                     <span className="user-info-value">{user.email}</span>
                 </div>
             </div>
-            <Link to="/" className="redirect-btn-landing">Landing</Link>
+            <Link to="/" className="button redirect-btn-landing">Landing</Link>
             <LogoutButton />
         </section>
     );

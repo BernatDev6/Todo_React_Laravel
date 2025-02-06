@@ -1,0 +1,32 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-dark {
+    background-image: url(../../../assets/images/bg-hero-darck.svg);
+}
+
+.hero-light {
+    background-image: url(../../../assets/images/bg-hero-light.svg);
+}
+
+
+.hero-content {
+    color: var(--text-color);
+    max-width: 800px;
+    padding: var(--spacing-xlarge);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xlarge);
+}
+
+.hero-button {
+    color: var(--text-color);
+    text-decoration: none;
+    background-color: var(--color-primary);
+}
