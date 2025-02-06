@@ -1,11 +1,10 @@
-/* Button */
 .create-note-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: var(--font-size-xlarge);
-  color: white;
-  background-color: var(--color-active);
+  color: var(--text-color);
+  background-color: var(--color-primary);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -18,7 +17,7 @@
 }
 
 .create-note-btn:hover {
-  background-color: #0056b3;
+  opacity: .7;
 }
 
 /* Modal */
@@ -37,12 +36,12 @@
 
 .modal-content {
   background: var(--bg-color);
+  color: var(--text-color);
   padding: var(--spacing-xlarge);
   border-radius: var(--border-radius);
   max-width: 400px;
   width: 100%;
   text-align: center;
-  box-shadow: var(--box-shadow);
 }
 
 .modal-content h2 {
@@ -54,13 +53,14 @@
   display: block;
   text-align: left;
   margin: var(--spacing-small) 0 var(--spacing-small);
-  font-weight: bold;
-  color: var(--text-secondary-color);
+  color: var(--text-color);
 }
 
 .modal-content input,
 .modal-content textarea {
   width: 100%;
+  background-color: var(--bg-secondary-color);
+  color: var(--text-color);
   padding: var(--spacing-small);
   margin-bottom: var(--spacing-medium);
   border: 1px solid var(--border-color);
@@ -89,11 +89,11 @@
 }
 
 .modal-buttons button[type="submit"] {
-  background-color: var(--color-success);
+  background-color: var(--color-primary);
 }
 
 .modal-buttons button[type="submit"]:hover {
-  background-color: #218838;
+  opacity: .7;
 }
 
 .modal-buttons button[type="button"] {
@@ -101,5 +101,5 @@
 }
 
 .modal-buttons button[type="button"]:hover {
-  background-color: #c82333;
+  opacity: .7;
 }

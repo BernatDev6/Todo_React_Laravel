@@ -6,7 +6,6 @@ import { CreateNote } from './CreateNoteModal/CreateNote';
 import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
-import { MainMenu } from '../Shared/MainMenu/MainMenu';
 
 interface User {
   id: number;
@@ -58,7 +57,6 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div className="dashboard-container">
-      <MainMenu />
       {/* Pannel de informacion del usuario */}
       <UserPannel user={user} />
 

@@ -9,7 +9,7 @@ interface CreateNoteProps {
 
 export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
   const [showModal, setShowModal] = useState(false);
-  const [newNote, setNewNote] = useState({ title: '', content: '' });
+  const [newNote, setNewNote] = useState({ title: '', content: '', status: 'pendiente' });
 
   const handleCreateNote = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -20,7 +20,7 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
       const createdNote = await createNote(token, newNote);
       setNotes([...notes, createdNote]);
       setShowModal(false);
-      setNewNote({ title: '', content: '' });
+      setNewNote({ title: '', content: '', status: 'pendiente' });
     } catch (error) {
       alert('Error al crear la nota');
     }

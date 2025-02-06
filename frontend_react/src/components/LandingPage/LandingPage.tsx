@@ -1,13 +1,11 @@
 import React from "react";
 import "./LandingPage.css";
 import { HeroSection } from "./HeroSection/HeroSection";
-import { MainMenu } from "../Shared/MainMenu/MainMenu";
 
 
 export const LandingPage: React.FC = () => {
   return (
     <div className="landing-page">
-      <MainMenu />
       <HeroSection />
       <section id="features" className="features">
         <div className="feature-item">

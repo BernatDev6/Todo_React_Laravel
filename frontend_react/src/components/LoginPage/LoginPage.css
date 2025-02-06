@@ -1,0 +1,84 @@
+.login {
+    padding: var(--spacing-medium);
+}
+
+/* Contenedor principal de login */
+.login-container {
+    margin: 0 auto;
+    width: 400px;
+    height: auto;
+    padding: var(--spacing-large);
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Título del login */
+.login-title {
+    font-size: var(--font-size-large);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-large);
+}
+
+/* Estilo del mensaje de error */
+.error-message {
+    color: var(--color-danger);
+    font-size: var(--font-size-small);
+    margin-bottom: var(--spacing-medium);
+}
+
+/* Formulario de login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+/* Estilo de los grupos de input */
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo de los campos de entrada */
+.input-field {
+    padding: var(--spacing-medium);
+    font-size: var(--font-size-base);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+/* Efecto de hover en los campos de entrada */
+.input-field:hover {
+    border-color: var(--color-primary);
+}
+
+/* Estilo del botón de submit */
+.submit-btn {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: .7;
+}
+
+/* Estilo del enlace de registro */
+.login-form a {
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+    text-decoration: none;
+    margin: var(--spacing-medium);
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}

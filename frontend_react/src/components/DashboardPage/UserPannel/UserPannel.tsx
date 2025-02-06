@@ -1,5 +1,4 @@
 import { LogoutButton } from '../../Shared/LogoutButton/LogoutButton';
-import { Link } from 'react-router-dom';
 import './UserPannel.css'
 
 interface User {
@@ -30,7 +29,6 @@ export const UserPannel: React.FC<UserPannelProps> = ({ user }) => {
                     <span className="user-info-value">{user.email}</span>
                 </div>
             </div>
-            <Link to="/" className="button redirect-btn-landing">Landing</Link>
             <LogoutButton />
         </section>
     );

@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import { registerUser } from '../../api';
 import { useNavigate, Link } from 'react-router-dom';
+import './RegisterPage.css'
 
 export const RegisterPage: React.FC = () => {
 
@@ -25,44 +26,45 @@ export const RegisterPage: React.FC = () => {
     };
 
     return (
-        <div className="register-container">
-            <h2 className="register-title">Registro de Usuario</h2>
-            {error && <p className="error-message">{error}</p>}
-            <form onSubmit={handleSubmit} className="register-form">
-                <div className="input-group">
-                    <label>Nombre:</label>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="input-field"
-                    />
-                </div>
-                <div className="input-group">
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="input-field"
-                    />
-                </div>
-                <div className="input-group">
-                    <label>Contraseña:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        className="input-field"
-                    />
-                </div>
-                <button type="submit"
-                    className="submit-btn">Registrarse</button>
+        <div className="register">
+            <div className="register-container">
+                <h2 className="register-title">Registro de Usuario</h2>
+                {error && <p className="error-message">{error}</p>}
+                <form onSubmit={handleSubmit} className="register-form">
+                    <div className="input-group">
+                        <label className="input-label">Nombre:</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            className="input-field"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="input-label">Email:</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            className="input-field"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="input-label">Contraseña:</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="input-field"
+                        />
+                    </div>
+                    <button type="submit" className="button submit-btn">Registrarse</button>
                     <Link to="/login">Login</Link>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }; 

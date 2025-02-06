@@ -5,7 +5,7 @@
 
 :root {
     /* Colores principales */
-    --color-primary: #45e3ff;
+    --color-primary: #00c2e4;
     --color-active: #007bff;
     --color-success: #28a745;
     --color-pending: #ffc107;
@@ -31,7 +31,7 @@
     --border-color: #dee2e6;
 
     /* Sombras */
-    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
     /* Tipografía */
     --font-size-small: 0.875rem;
@@ -47,11 +47,12 @@
     --spacing-medium: 1rem;
     --spacing-large: 1.5rem;
     --spacing-xlarge: 2rem;
+    --spacing-xxlarge: 3rem;
+
 }
 
 [data-theme="dark"] {
     /* Colores principales */
-    --color-primary: #00b8d8;
     --color-active: #4dabf7;
     --color-success: #2ed573;
     --color-pending: #ffa502;
@@ -70,26 +71,51 @@
 
     /* Colores para cards según estado */
     --card-success-bg: #305232;
-    --card-pending-bg: #72601f;
+    --card-pending-bg: #85712b;
     --card-active-bg: #414177;
 
     /* Bordes */
     --border-color: #343a40;
 
     /* Sombras */
-    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    --box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+@font-face {
+    font-family: 'Nunito-Regular';
+    src: url('./assets/fonts/static/Nunito-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('./assets/fonts/static/Nunito-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
     background-color: var(--bg-color);
+    font-family: 'Nunito-Regular', sans-serif;
 }
 
 h1 {
     font-size: var(--font-size-xlarge);
 }
 
-h1, h2 {
+h1,
+h2 {
     color: var(--color-primary);
+    font-family: 'Nunito-Bold', sans-serif;
+}
+
+h3 {
+    font-family: 'Nunito-Bold', sans-serif;
+}
+
+p, span, select, option {
+    font-family: 'Nunito-Regular', sans-serif;
 }
 
 .button {

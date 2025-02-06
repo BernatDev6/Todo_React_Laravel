@@ -17,7 +17,6 @@
     background-color: var(--bg-color);
     padding: var(--spacing-medium);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
     text-align: center;
     width: 30%;
 }
