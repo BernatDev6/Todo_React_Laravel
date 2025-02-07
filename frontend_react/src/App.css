@@ -6,6 +6,7 @@
 :root {
     /* Colores principales */
     --color-primary: #00c2e4;
+    --color-primary-rgb: 0, 194, 228;
     --color-active: #007bff;
     --color-success: #28a745;
     --color-pending: #ffc107;
@@ -48,7 +49,7 @@
     --spacing-large: 1.5rem;
     --spacing-xlarge: 2rem;
     --spacing-xxlarge: 3rem;
-
+    --spacing-xxxlarge: 6rem;
 }
 
 [data-theme="dark"] {

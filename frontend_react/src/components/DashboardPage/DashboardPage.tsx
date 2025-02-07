@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, getUserNotes } from '../../api';
-import './DashboardPage.css'
+import './DashboardPage.css';
 import { CreateNote } from './CreateNoteModal/CreateNote';
 import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
+import { LoaderComp } from '../Shared/LoaderComp/LoaderComp';
 
 interface User {
   id: number;
@@ -24,9 +25,10 @@ export const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
   const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const fetchUserData = async () => {
+  useEffect(() => {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -34,25 +36,31 @@ export const DashboardPage: React.FC = () => {
       return;
     }
 
-    try {
-      const userData = await getUserData(token);
-      setUser(userData);
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUserData(token);
+        setUser(userData);
 
-      const userNotes = await getUserNotes(token);
-      setNotes(userNotes);
-    } catch (error) {
-      alert('Error al obtener los datos del usuario');
-      localStorage.removeItem('token');
-      navigate('/login');
-    }
-  };
+        const userNotes = await getUserNotes(token);
+        setNotes(userNotes);
+      } catch (error) {
+        alert('Error al obtener los datos del usuario');
+        localStorage.removeItem('token');
+        navigate('/login');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [navigate]);
+
+  if (loading) {
+    return <LoaderComp />;
+  }
 
   if (!user) {
-    return <p className="loading-message">Cargando información del usuario...</p>;
+    return null;
   }
 
   return (
@@ -86,6 +94,5 @@ export const DashboardPage: React.FC = () => {
         <CardNote notes={notes} />
       )}
     </div>
-
   );
 };

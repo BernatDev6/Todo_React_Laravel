@@ -3,29 +3,3 @@
     margin: 0;
     padding: 0;
 }
-
-/* Features Section */
-.features {
-    display: flex;
-    justify-content: space-between;
-    padding: var(--spacing-xlarge);
-    background-color: var(--bg-secondary-color);
-    color: var(--text-secondary-color);
-}
-
-.feature-item {
-    background-color: var(--bg-color);
-    padding: var(--spacing-medium);
-    border-radius: var(--border-radius);
-    text-align: center;
-    width: 30%;
-}
-
-.feature-item h2 {
-    font-size: var(--font-size-large);
-    margin-bottom: var(--spacing-medium);
-}
-
-.feature-item p {
-    font-size: var(--font-size-base);
-}

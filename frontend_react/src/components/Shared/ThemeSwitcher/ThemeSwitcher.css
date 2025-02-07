@@ -1,11 +1,15 @@
 .theme-select {
     padding: var(--spacing-small);
     font-size: var(--font-size-base);
-    border: 1px solid var(--text-color);
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--bg-color);
     color: var(--text-color);
     cursor: pointer;
+}
+
+.theme-select:hover {
+    background-color: var(--bg-secondary-color);
 }
 
 .theme-select:focus {

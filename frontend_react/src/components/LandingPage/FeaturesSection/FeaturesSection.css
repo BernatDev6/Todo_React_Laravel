@@ -1,0 +1,26 @@
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xxlarge);
+    padding: var(--spacing-xxxlarge) var(--spacing-large);
+    background-color: var(--bg-secondary-color);
+    color: var(--text-secondary-color);
+}
+
+.feature-item {
+    background-color: var(--bg-color);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature-item h2 {
+    margin-bottom: var(--spacing-medium);
+}
+
+.feature-item p {
+    font-size: var(--font-size-base);
+}

@@ -27,7 +27,17 @@
     transition: background-color 0.3s ease, border 0.3s ease;
 }
 
-.menu-link.active {
+.login-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: var(--spacing-medium);
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+.menu-link.active, .login-link.active {
     color: var(--color-primary)
 }
 
