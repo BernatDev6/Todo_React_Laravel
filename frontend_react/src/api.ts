@@ -110,13 +110,16 @@ export const createNote = async (token: string, note: { title: string, content: 
     return data;
 };
 
-export const updateNoteStatus = async (noteId: number, status: 'pendiente' | 'activa' | 'completada') => {
+/** 
+ * Actualizando la nota seleccionada. 
+ */
+export const updateNote = async (noteId: number, updatedNote: { title: string; content: string; status: 'pendiente' | 'activa' | 'completada' }) => {
     const token = localStorage.getItem('token');
     if (!token) throw new Error('No token found');
 
     const response = await axios.put(
         `${API_URL}/notes/${noteId}`,
-        { status },
+        updatedNote,
         {
             headers: { Authorization: `Bearer ${token}` },
         }

@@ -10,15 +10,16 @@ interface Note {
 
 interface ListNoteProps {
   notes: Note[];
+  onNoteClick: (note: Note) => void;
 }
 
-export const ListNote: React.FC<ListNoteProps> = ({ notes }) => {
+export const ListNote: React.FC<ListNoteProps> = ({ notes, onNoteClick }) => {
   return (
     <section className="list-note-container">
       {notes.length > 0 ? (
         <ul className="notes-list">
           {notes.map((note) => (
-            <li key={note.id} className={`note-item ${note.status}`}>
+            <li key={note.id} onClick={() => onNoteClick(note)} className={`note-item ${note.status}`}>
               <h3 className="item-title">{note.title}</h3>
               <p className="item-content">{note.content}</p>
               <p className="item-status">{note.status}</p>

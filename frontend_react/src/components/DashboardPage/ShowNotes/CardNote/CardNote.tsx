@@ -10,14 +10,19 @@ interface Note {
 
 interface CardNoteProps {
     notes: Note[];
+    onNoteClick: (note: Note) => void;
 }
 
-export const CardNote: React.FC<CardNoteProps> = ({ notes }) => {
+export const CardNote: React.FC<CardNoteProps> = ({ notes, onNoteClick }) => {
     return (
         <section className="note-cards-container">
             {notes.length > 0 ? (
                 notes.map((note) => (
-                    <article key={note.id} className={`note-card ${note.status}`}>
+                    <article
+                        key={note.id}
+                        onClick={() => onNoteClick(note)}
+                        className={`note-card ${note.status}`}
+                    >
                         <div className="note-card-content">
                             <h3 className="card-title">{note.title}</h3>
                             <p className="card-content">{note.content}</p>

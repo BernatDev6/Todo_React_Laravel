@@ -32,8 +32,8 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>Crear Nueva Nota</h2>
-            <form onSubmit={handleCreateNote}>
+            <h3>Crear Nueva Nota</h3>
+            <form className="modal-form" onSubmit={handleCreateNote}>
               <label>Título:</label>
               <input
                 type="text"
@@ -48,10 +48,8 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
                 required
               />
               <div className="modal-buttons">
-                <button type="submit">Guardar Nota</button>
-                <button type="button" onClick={() => setShowModal(false)}>
-                  Cancelar
-                </button>
+                <button className="button cancel-btn" type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+                <button className="button save-btn" type="submit">Guardar</button>
               </div>
             </form>
           </div>

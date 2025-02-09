@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserData, getUserNotes } from '../../api';
 import './DashboardPage.css';
 import { CreateNote } from './CreateNoteModal/CreateNote';
+import { EditNoteModal } from './EditNoteModal/EditNoteModal';
 import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
@@ -24,6 +25,7 @@ interface Note {
 export const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null); // Nota seleccionada para editar
   const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -63,15 +65,19 @@ export const DashboardPage: React.FC = () => {
     return null;
   }
 
+  const handleNoteClick = (note: Note) => {
+    setSelectedNote(note);
+  };
+
+  const handleModalClose = () => {
+    setSelectedNote(null);
+  };
+
   return (
     <div className="dashboard-container">
-      {/* Pannel de informacion del usuario */}
       <UserPannel user={user} />
-
-      {/* Componente modal para crear nota */}
       <CreateNote setNotes={setNotes} notes={notes} />
 
-      {/* Botones para cambiar de vista */}
       <div className="view-toggle-buttons">
         <button
           className={`button toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
@@ -87,11 +93,21 @@ export const DashboardPage: React.FC = () => {
         </button>
       </div>
 
-      {/* Listado de Notas del Usuario */}
-      {viewMode === 'list' ? (
-        <ListNote notes={notes} />
+      {notes.length === 0 ? (
+        <p className="no-notes-message">No tienes notas disponibles. ¡Crea tu primera nota!</p>
+      ) : viewMode === 'list' ? (
+        <ListNote notes={notes} onNoteClick={handleNoteClick} />
       ) : (
-        <CardNote notes={notes} />
+        <CardNote notes={notes} onNoteClick={handleNoteClick} />
+      )}
+
+      {/* Modal para editar nota */}
+      {selectedNote && (
+        <EditNoteModal
+          note={selectedNote}
+          onClose={handleModalClose}
+          setNotes={setNotes}
+        />
       )}
     </div>
   );
