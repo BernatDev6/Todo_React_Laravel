@@ -13,10 +13,8 @@
   right: var(--spacing-medium);
   width: 2.5rem;
   height: 2.5rem;
-  z-index: 10;
 }
 
 .create-note-btn:hover {
   opacity: .7;
 }
-

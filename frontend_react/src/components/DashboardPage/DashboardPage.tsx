@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, getUserNotes } from '../../api';
 import './DashboardPage.css';
-import { CreateNote } from './CreateNoteModal/CreateNote';
+import { CreateNoteModal } from './CreateNoteModal/CreateNoteModal';
 import { EditNoteModal } from './EditNoteModal/EditNoteModal';
 import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
@@ -76,7 +76,7 @@ export const DashboardPage: React.FC = () => {
   return (
     <div className="dashboard-container">
       <UserPannel user={user} />
-      <CreateNote setNotes={setNotes} notes={notes} />
+      <CreateNoteModal setNotes={setNotes} notes={notes} />
 
       <div className="view-toggle-buttons">
         <button
@@ -96,7 +96,7 @@ export const DashboardPage: React.FC = () => {
       {notes.length === 0 ? (
         <p className="no-notes-message">No tienes notas disponibles. ¡Crea tu primera nota!</p>
       ) : viewMode === 'list' ? (
-        <ListNote notes={notes} onNoteClick={handleNoteClick} />
+        <ListNote notes={notes} setNotes={setNotes} onNoteClick={handleNoteClick} />
       ) : (
         <CardNote notes={notes} onNoteClick={handleNoteClick} />
       )}
@@ -105,6 +105,7 @@ export const DashboardPage: React.FC = () => {
       {selectedNote && (
         <EditNoteModal
           note={selectedNote}
+          notes={notes}
           onClose={handleModalClose}
           setNotes={setNotes}
         />

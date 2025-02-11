@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './EditNoteModal.css';
 import { updateNote } from '../../../api';
+import { DeleteNoteModal } from '../DeleteNoteModal/DeleteNoteModal';
 
 interface Note {
   id: number;
@@ -11,22 +12,25 @@ interface Note {
 
 interface EditNoteModalProps {
   note: Note;
+  notes: Note[];
   onClose: () => void;
   setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 }
 
-export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, onClose, setNotes }) => {
+export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, notes, onClose, setNotes }) => {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
+  const [status, setStatus] = useState(note.status);
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false); // Estado para controlar la visibilidad del menú
 
   const handleSave = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const updatedNote = { title, content, status: note.status };
+      const updatedNote = { title, content, status };
       await updateNote(note.id, updatedNote);
 
       setNotes((prevNotes) =>
-        prevNotes.map((n) => (n.id === note.id ? { ...n, title, content } : n))
+        prevNotes.map((n) => (n.id === note.id ? { ...n, title, content, status } : n))
       );
 
       onClose();
@@ -34,6 +38,10 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, onClose, set
       alert('Error updating the note. Please try again.');
       console.error(error);
     }
+  };
+
+  const toggleSettingsMenu = () => {
+    setShowSettingsMenu(!showSettingsMenu); // Alternar la visibilidad del menú
   };
 
   return (
@@ -52,6 +60,12 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, onClose, set
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
+          <label>Estado:</label>
+          <select value={status} onChange={(e) => setStatus(e.target.value as 'pendiente' | 'activa' | 'completada')} className="form-select">
+            <option value="pendiente">Pendiente</option>
+            <option value="activa">Activa</option>
+            <option value="completada">Completada</option>
+          </select>
           <div className="modal-buttons">
             <button onClick={(e) => { e.preventDefault(); onClose(); }} className="button cancel-btn">
               Cancelar
@@ -59,6 +73,19 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, onClose, set
             <button type="submit" className="button save-btn">Guardar</button>
           </div>
         </form>
+        {/* Botón de settings */}
+        <div className="settings-container">
+          <button className="settings-btn" onClick={toggleSettingsMenu}>
+            <i className="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+          {showSettingsMenu && (
+            <div className="settings-menu">
+              <button className="settings-menu-btn">
+                <DeleteNoteModal noteId={note.id} notes={notes} setNotes={setNotes} onClose={onClose}/>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

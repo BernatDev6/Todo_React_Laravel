@@ -128,6 +128,24 @@ export const updateNote = async (noteId: number, updatedNote: { title: string; c
 };
 
 /** 
+ * Eliminamos la nota seleccionada. 
+ */
+export const deleteNote = async (noteId: number) => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('No token found');
+
+    const response = await axios.delete(
+        `${API_URL}/notes/${noteId}`,
+        {
+            headers: { Authorization: `Bearer ${token}` },
+        }
+    );
+    return response.data;
+};
+
+
+
+/** 
  * Interceptor de Axios que agrega el token JWT a las solicitudes. 
  */
 axios.interceptors.request.use((config) => {

@@ -18,17 +18,19 @@ export const CardNote: React.FC<CardNoteProps> = ({ notes, onNoteClick }) => {
         <section className="note-cards-container">
             {notes.length > 0 ? (
                 notes.map((note) => (
-                    <article
-                        key={note.id}
-                        onClick={() => onNoteClick(note)}
-                        className={`note-card ${note.status}`}
-                    >
-                        <div className="note-card-content">
-                            <h3 className="card-title">{note.title}</h3>
-                            <p className="card-content">{note.content}</p>
-                            <p className="card-status">{note.status}</p>
+                    <article className="card-container">
+                        <div
+                            key={note.id}
+                            onClick={() => onNoteClick(note)}
+                            className={`note-card ${note.status}`}
+                        >
+                            <div className="note-card-overlay"></div>
+                            <div className="note-card-content">
+                                <h3 className="card-title">{note.title}</h3>
+                                <p className="card-content">{note.content}</p>
+                                <p className="card-status">{note.status}</p>
+                            </div>
                         </div>
-                        <div className="note-card-overlay"></div>
                     </article>
                 ))
             ) : (

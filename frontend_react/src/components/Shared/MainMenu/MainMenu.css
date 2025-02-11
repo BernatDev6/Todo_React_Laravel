@@ -21,7 +21,7 @@
     text-decoration: none;
     color: var(--text-color);
     font-size: var(--font-size-base);
-    border: 2px solid transparent;
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--bg-color);
     transition: background-color 0.3s ease, border 0.3s ease;
@@ -43,7 +43,6 @@
 
 .menu-link:hover {
     background-color: var(--bg-secondary-color);
-    border: 2px solid var(--color-primary);
 }
 
 .menu-link:active {

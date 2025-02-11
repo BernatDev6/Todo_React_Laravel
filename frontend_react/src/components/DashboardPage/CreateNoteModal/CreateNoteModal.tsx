@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { createNote } from '../../../api';
-import './CreateNote.css'
+import './CreateNoteModal.css'
 
 interface CreateNoteProps {
   setNotes: (notes: any[]) => void;
   notes: any[];
 }
 
-export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
-  const [showModal, setShowModal] = useState(false);
+export const CreateNoteModal: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const [newNote, setNewNote] = useState({ title: '', content: '', status: 'pendiente' });
 
   const handleCreateNote = async (event: React.FormEvent) => {
@@ -19,7 +19,7 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
 
       const createdNote = await createNote(token, newNote);
       setNotes([...notes, createdNote]);
-      setShowModal(false);
+      setShowCreateModal(false);
       setNewNote({ title: '', content: '', status: 'pendiente' });
     } catch (error) {
       alert('Error al crear la nota');
@@ -28,8 +28,8 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
 
   return (
     <>
-      <button className="create-note-btn" onClick={() => setShowModal(true)} title="Add Note">+</button>
-      {showModal && (
+      <button className="create-note-btn" onClick={() => setShowCreateModal(true)} title="Add Note">+</button>
+      {showCreateModal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3>Crear Nueva Nota</h3>
@@ -48,7 +48,7 @@ export const CreateNote: React.FC<CreateNoteProps> = ({ setNotes, notes }) => {
                 required
               />
               <div className="modal-buttons">
-                <button className="button cancel-btn" type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+                <button className="button cancel-btn" type="button" onClick={() => setShowCreateModal(false)}>Cancelar</button>
                 <button className="button save-btn" type="submit">Guardar</button>
               </div>
             </form>

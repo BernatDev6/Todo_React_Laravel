@@ -9,19 +9,21 @@
     box-shadow: var(--box-shadow);
 }
 
+.card-container {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
 .note-card {
     position: relative;
     width: 300px;
     background-color: var(--bg-color);
     overflow: hidden;
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     padding: var(--spacing-medium);
     transition: transform 0.3s ease;
-}
-
-.note-card:hover {
-    transform: scale(1.02);
 }
 
 .note-card-content {
