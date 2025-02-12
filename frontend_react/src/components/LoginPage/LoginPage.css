@@ -1,8 +1,13 @@
 /* Contenedor principal de login */
+.login {
+    padding: var(--spacing-medium);
+}
+
 .login-container {
     margin: 0 auto;
     margin-top: var(--spacing-xxxlarge);
-    width: 400px;
+    margin-bottom: var(--spacing-large);
+    max-width: 400px;
     height: auto;
     padding: var(--spacing-large);
     background-color: var(--bg-color);

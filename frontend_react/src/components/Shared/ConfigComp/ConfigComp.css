@@ -1,3 +1,7 @@
+.modal-overlay .content-config {
+    padding: var(--spacing-large) var(--spacing-xxlarge);
+}
+
 .config-btn {
     background: none;
     border: none;
@@ -13,6 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: var(--spacing-small) 0;
 }
 
 .theme-row span {

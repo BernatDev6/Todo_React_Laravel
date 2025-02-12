@@ -39,7 +39,7 @@ export const DeleteNoteModal: React.FC<DeleteNoteProps> = ({ noteId, setNotes, n
     return (
         <>
             <button className="delete-note-btn" onClick={() => setShowDeleteModal(true)} title="Delete Note">
-                <span>Delete</span>
+                <span>Eliminar</span>
                 <i className="fa-regular fa-trash-can"></i>
             </button>
             {showDeleteModal && (

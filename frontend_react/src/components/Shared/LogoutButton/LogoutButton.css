@@ -1,7 +1,7 @@
 .logout-btn {
-    padding: var(--spacing-small) var(--spacing-medium);
+    padding: var(--spacing-small) var(--spacing-small);
     font-size: var(--font-size-base);
-    background-color: var(--color-danger);
+    background-color: var(--bg-color);
     color: var(--text-color);
     border: none;
     border-radius: var(--border-radius);
@@ -10,5 +10,5 @@
 }
 
 .logout-btn:hover {
-    opacity: .7 ;
+    background-color: var(--bg-secondary-color);
 }

@@ -4,7 +4,9 @@
 
 .register-container {
     margin: 0 auto;
-    width: 400px;
+    margin-top: var(--spacing-xxxlarge);
+    margin-bottom: var(--spacing-large);
+    max-width: 450px;
     height: auto;
     padding: var(--spacing-large);
     background-color: var(--bg-color);

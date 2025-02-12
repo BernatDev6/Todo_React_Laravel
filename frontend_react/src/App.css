@@ -3,6 +3,16 @@
     padding: 0;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#main {
+    flex: 1;
+}
+
 :root {
     /* Colores principales */
     --color-primary: #00c2e4;
@@ -121,7 +131,8 @@ select,
 option,
 label,
 textarea,
-input {
+input,
+button {
     font-family: 'Nunito-Regular', sans-serif;
 }
 

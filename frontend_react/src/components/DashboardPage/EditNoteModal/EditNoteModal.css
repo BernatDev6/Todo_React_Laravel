@@ -10,15 +10,22 @@
 
 .settings-menu {
   position: absolute;
-  top: 10%;
-  right: -12%;
+  top: 11%;
+  right: 3%;
   background-color: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
   min-width: 100px;
-  overflow: hidden;
+  opacity: 0; 
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.settings-container:hover .settings-menu {
+  opacity: 1;
+  visibility: visible;
 }
 
 .settings-menu-btn {

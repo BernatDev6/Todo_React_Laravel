@@ -3,6 +3,7 @@
   padding: var(--spacing-medium);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  margin-bottom: var(--spacing-large);
 }
 
 .notes-list {
@@ -64,6 +65,11 @@
 .content-text {
   position: relative;
   color: var(--text-secondary-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content-status {
@@ -91,6 +97,7 @@
 .note-item.completada {
   box-shadow: inset var(--spacing-small) 0 0 0 var(--card-success-bg);
 }
+
 .note-item.pendiente .item-content::before {
   background: linear-gradient(90deg, var(--card-pending-bg) 70%, var(--bg-color) 100%);
 }

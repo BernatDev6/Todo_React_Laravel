@@ -9,10 +9,11 @@
   border-radius: 50%;
   cursor: pointer;
   position: fixed;
-  bottom: var(--spacing-medium);
+  bottom: 8.4rem;
   right: var(--spacing-medium);
   width: 2.5rem;
   height: 2.5rem;
+  z-index: 10;
 }
 
 .create-note-btn:hover {

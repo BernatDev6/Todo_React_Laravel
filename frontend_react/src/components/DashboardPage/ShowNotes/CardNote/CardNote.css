@@ -7,6 +7,7 @@
     padding: var(--spacing-medium);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    margin-bottom: var(--spacing-large);
 }
 
 .card-container {
@@ -17,7 +18,7 @@
 
 .note-card {
     position: relative;
-    width: 300px;
+    width: 220px;
     background-color: var(--bg-color);
     overflow: hidden;
     cursor: pointer;

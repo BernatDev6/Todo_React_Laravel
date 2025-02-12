@@ -1,6 +1,5 @@
 import React from 'react';
 import './ListNote.css';
-import { DeleteNoteModal } from '../../DeleteNoteModal/DeleteNoteModal';
 
 interface Note {
   id: number;
@@ -15,7 +14,7 @@ interface ListNoteProps {
   setNotes: React.Dispatch<React.SetStateAction<Note[]>>; // Declaración de setNotes
 }
 
-export const ListNote: React.FC<ListNoteProps> = ({ notes, setNotes, onNoteClick }) => {
+export const ListNote: React.FC<ListNoteProps> = ({ notes, onNoteClick }) => {
   return (
     <section className="list-note-container">
       {notes.length > 0 ? (
@@ -26,9 +25,6 @@ export const ListNote: React.FC<ListNoteProps> = ({ notes, setNotes, onNoteClick
                 <h3 className="content-title">{note.title}</h3>
                 <p className="content-text">{note.content}</p>
                 <p className="content-status">{note.status}</p>
-              </div>
-              <div className="delete-list-btn">
-                <DeleteNoteModal noteId={note.id} notes={notes} setNotes={setNotes} />
               </div>
             </li>
           ))}

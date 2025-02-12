@@ -21,7 +21,6 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, notes, onClo
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
   const [status, setStatus] = useState(note.status);
-  const [showSettingsMenu, setShowSettingsMenu] = useState(false); // Estado para controlar la visibilidad del menú
 
   const handleSave = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,10 +37,6 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, notes, onClo
       alert('Error updating the note. Please try again.');
       console.error(error);
     }
-  };
-
-  const toggleSettingsMenu = () => {
-    setShowSettingsMenu(!showSettingsMenu); // Alternar la visibilidad del menú
   };
 
   return (
@@ -75,16 +70,14 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, notes, onClo
         </form>
         {/* Botón de settings */}
         <div className="settings-container">
-          <button className="settings-btn" onClick={toggleSettingsMenu}>
+          <button className="settings-btn">
             <i className="fa-solid fa-ellipsis-vertical"></i>
           </button>
-          {showSettingsMenu && (
-            <div className="settings-menu">
-              <button className="settings-menu-btn">
-                <DeleteNoteModal noteId={note.id} notes={notes} setNotes={setNotes} onClose={onClose}/>
-              </button>
-            </div>
-          )}
+          <div className="settings-menu">
+            <button className="settings-menu-btn">
+              <DeleteNoteModal noteId={note.id} notes={notes} setNotes={setNotes} onClose={onClose} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

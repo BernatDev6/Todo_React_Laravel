@@ -1,4 +1,3 @@
-import { LogoutButton } from '../../Shared/LogoutButton/LogoutButton';
 import './UserPannel.css'
 
 interface User {
@@ -29,7 +28,6 @@ export const UserPannel: React.FC<UserPannelProps> = ({ user }) => {
                     <span className="user-info-value">{user.email}</span>
                 </div>
             </div>
-            <LogoutButton />
         </section>
     );
 };

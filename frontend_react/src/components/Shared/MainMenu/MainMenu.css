@@ -5,11 +5,18 @@
     background-color: var(--bg-color);
     padding: var(--spacing-medium);
     font-family: 'Nunito-Regular', sans-serif;
+    position: relative;
 }
 
-.logo {
-    max-width: 50px;
-    border-radius: 50%;
+.menu-icon {
+    width: 36px;
+    height: auto;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: var(--font-size-large);
 }
 
 .menu {
@@ -37,8 +44,9 @@
     text-decoration: underline;
 }
 
-.menu-link.active, .login-link.active {
-    color: var(--color-primary)
+.menu-link.active,
+.login-link.active {
+    color: var(--color-primary);
 }
 
 .menu-link:hover {
@@ -50,8 +58,41 @@
     color: var(--bg-secondary-color);
 }
 
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-medium);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 20;
+    }
+
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: block;
     }
 }

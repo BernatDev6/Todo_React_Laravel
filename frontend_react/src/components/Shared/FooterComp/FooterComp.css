@@ -1,0 +1,28 @@
+/* Estilos para el footer */
+.footer {
+    background-color: var(--bg-secondary-color);
+    padding: var(--spacing-large) 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 var(--spacing-medium);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: var(--font-size-small);
+    color: var(--text-secondary-color);
+    margin-bottom: var(--spacing-small);
+}
+
+.footer-link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
