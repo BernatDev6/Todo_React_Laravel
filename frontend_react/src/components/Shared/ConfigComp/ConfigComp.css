@@ -3,12 +3,21 @@
 }
 
 .config-btn {
-    background: none;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius);
     border: none;
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.config-btn:hover {
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 .config-icon {
-    color: var(--text-color);
     font-size: var(--font-size-base);
 }
 

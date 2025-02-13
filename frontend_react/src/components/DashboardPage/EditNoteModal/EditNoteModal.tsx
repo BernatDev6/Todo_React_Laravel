@@ -74,9 +74,9 @@ export const EditNoteModal: React.FC<EditNoteModalProps> = ({ note, notes, onClo
             <i className="fa-solid fa-ellipsis-vertical"></i>
           </button>
           <div className="settings-menu">
-            <button className="settings-menu-btn">
+            <div className="settings-menu-btn">
               <DeleteNoteModal noteId={note.id} notes={notes} setNotes={setNotes} onClose={onClose} />
-            </button>
+            </div>
           </div>
         </div>
       </div>

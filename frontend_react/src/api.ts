@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const API_URL = 'http://localhost:8000/api';
+export const IMG_URL = 'http://localhost:8000';
 
 interface LoginResponse {
     token: string;
@@ -143,6 +144,64 @@ export const deleteNote = async (noteId: number) => {
     return response.data;
 };
 
+/** 
+ * Obtiene la imagen de perfil del usuario autenticado. 
+ */
+export const getProfileImage = async (): Promise<string | null> => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('No token found');
+
+    try {
+        const response = await axios.get(`${API_URL}/profile/image`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        // Retornar la URL de la imagen de perfil si la respuesta es exitosa
+        return IMG_URL + response.data.profile_image.trim();
+    } catch (error: any) {
+        // Si el error proviene de Laravel, extraemos el mensaje
+        if (error.response && error.response.data && error.response.data.error) {
+            throw new Error(error.response.data.error); // Devuelve el mensaje de error de Laravel
+        } else {
+            // Si el error no es específico de la API, mostramos un mensaje genérico
+            throw new Error('Error al obtener la imagen de perfil');
+        }
+    }
+};
+
+
+/** 
+ * Sube una nueva imagen de perfil para el usuario autenticado. 
+ * @param file Archivo de imagen seleccionado por el usuario.
+ */
+export const uploadProfileImage = async (file: File): Promise<string> => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('No token found');
+
+    try {
+        const formData = new FormData();
+        formData.append('profile_image', file);
+
+        const response = await axios.post(`${API_URL}/profile/upload`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        return response.data.image; // Retorna el nombre o URL de la imagen subida
+    } catch (error: any) {
+        // Si el error proviene de Laravel, extraemos el mensaje
+        if (error.response && error.response.data && error.response.data.error) {
+            throw new Error(error.response.data.error); // Devuelve el mensaje de error de Laravel
+        } else {
+            // Si el error no es específico de la API, mostramos un mensaje genérico
+            throw new Error('Error al subir la imagen de perfil');
+        }
+    }
+};
 
 
 /** 

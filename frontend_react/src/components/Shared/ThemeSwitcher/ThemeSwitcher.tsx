@@ -3,25 +3,41 @@ import { useTheme } from './ThemeContext'; // Asegúrate de importar el hook use
 import './ThemeSwitcher.css';
 
 export const ThemeSwitcher: FC = () => {
-  const { theme, toggleTheme } = useTheme(); // Consume el contexto
+  // Definimos un tipo para los temas disponibles
+  type Theme = 'light' | 'dark' | 'yellow' | 'orange' | 'green' | 'blue'; // Puedes agregar más temas aquí
 
+  const { theme, setTheme } = useTheme(); // Usamos setTheme del contexto
+
+  // Lista de temas disponibles
+  const themes = [
+    { value: 'light', label: 'Light' },
+    { value: 'dark', label: 'Dark' },
+    { value: 'yellow', label: 'Yellow' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'green', label: 'Green' },
+    { value: 'blue', label: 'Blue' },
+  ];
+
+  // Maneja el cambio de tema
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedTheme = e.target.value;
-    // Cambiar el tema directamente usando el setter de tema
-    localStorage.setItem('theme', selectedTheme); // Guarda el tema seleccionado en el localStorage
-    toggleTheme(); // Invoca el toggle para cambiar el tema
+    const selectedTheme = e.target.value as Theme; // Aseguramos que el valor sea de tipo Theme
+    setTheme(selectedTheme); // Establece el tema directamente
   };
 
   return (
     <div className="theme-switcher">
+      <label htmlFor="theme-select" className="sr-only">Select theme</label>
       <select
+        id="theme-select"
         value={theme}
         onChange={handleChange}
         className="theme-select"
-        aria-label="Select theme"
       >
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
+        {themes.map((themeOption) => (
+          <option key={themeOption.value} value={themeOption.value}>
+            {themeOption.label}
+          </option>
+        ))}
       </select>
     </div>
   );

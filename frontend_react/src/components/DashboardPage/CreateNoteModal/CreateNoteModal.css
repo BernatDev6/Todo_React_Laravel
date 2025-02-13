@@ -2,18 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--font-size-xlarge);
+  font-size: var(--font-size-base);
   color: var(--text-color);
   background-color: var(--color-primary);
-  border: none;
-  border-radius: 50%;
   cursor: pointer;
-  position: fixed;
-  bottom: 8.4rem;
-  right: var(--spacing-medium);
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: 10;
+  transition: opacity 0.3s ease;
 }
 
 .create-note-btn:hover {

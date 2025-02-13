@@ -1,0 +1,28 @@
+.view-toggle-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-toggle-buttons {
+  display: flex;
+  margin: var(--spacing-medium) 0;
+}
+
+.toggle-btn {
+  color: var(--text-color);
+  margin: 0 var(--spacing-small);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-secondary-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-btn.active {
+  background-color: var(--color-primary);
+}
+
+.toggle-btn:hover {
+  opacity: 0.7;
+}

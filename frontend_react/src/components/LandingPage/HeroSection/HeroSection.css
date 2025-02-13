@@ -6,12 +6,28 @@
     background-size: cover;
 }
 
-.hero-dark {
+.hero.dark {
     background-image: url(../../../assets/images/bg-hero-darck.svg);
 }
 
-.hero-light {
+.hero.light {
     background-image: url(../../../assets/images/bg-hero-light.svg);
+}
+
+.hero.yellow {
+    background-image: url(../../../assets/images/bg-hero-yellow.svg);
+}
+
+.hero.orange {
+    background-image: url(../../../assets/images/bg-hero-orange.svg);
+}
+
+.hero.green {
+    background-image: url(../../../assets/images/bg-hero-green.svg);
+}
+
+.hero.blue {
+    background-image: url(../../../assets/images/bg-hero-blue.svg);
 }
 
 .hero-content {
@@ -33,4 +49,10 @@
     color: var(--text-color);
     text-decoration: none;
     background-color: var(--color-primary);
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.hero-button:hover {
+    opacity: .7;
 }

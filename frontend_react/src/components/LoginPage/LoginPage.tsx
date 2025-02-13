@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { login } from '../../api';
 import './LoginPage.css'
 import { LoaderComp } from '../Shared/LoaderComp/LoaderComp';
@@ -10,6 +10,8 @@ export const LoginPage: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const [message, setMesage] = useState<string | null>(location.state?.message);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -20,13 +22,13 @@ export const LoginPage: React.FC = () => {
             if (!token) throw new Error("No token received");
 
             localStorage.setItem('token', token);
-            const userData = { email };
 
-            navigate('/dashboard', { state: { user: userData } });
+            navigate('/dashboard');
         } catch (error: any) {
             setError(error.response?.data?.message || 'Error en el login');
+            setMesage('')
         } finally {
-            setIsLoading(false); // Desactivar el loader
+            setIsLoading(false);
         }
     };
 
@@ -38,6 +40,7 @@ export const LoginPage: React.FC = () => {
                 <div className="login-container">
                     <h2 className="login-title">Login</h2>
                     {error && <p className="error-message">{error}</p>}
+                    {message && <p className="error-message">{message}</p>}
                     <form onSubmit={handleSubmit} className="login-form">
                         <div className="input-group">
                             <input

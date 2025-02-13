@@ -92,6 +92,135 @@
     --box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
 }
 
+[data-theme="yellow"] {
+    /* Colores principales */
+    --color-primary: #ffcc00;
+    --color-primary-rgb: 255, 204, 0;
+    --color-active: #ffb300;
+    --color-success: #85c341;
+    --color-pending: #ff9800;
+    --color-danger: #ff5252;
+
+    /* Fondo */
+    --bg-color: #fff9c4;
+    --bg-color-rgb: 255, 249, 196;
+    --bg-secondary-color: #fff59d;
+    --bg-card-color: #fffbdd;
+    --bg-hover-color: #fff176;
+
+    /* Colores de texto */
+    --text-color: #5c3b00;
+    --text-secondary-color: #8d6e63;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #dff8bf;
+    --card-pending-bg: #ffecb3;
+    --card-active-bg: #cff0ffda;
+
+    /* Bordes */
+    --border-color: #ffcc80;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(255, 204, 0, 0.3);
+}
+
+[data-theme="orange"] {
+    /* Colores principales */
+    --color-primary: #ff7700;
+    --color-primary-rgb: 255, 119, 0;
+    --color-active: #ff5500;
+    --color-success: #66bb6a;
+    --color-pending: #ffa726;
+    --color-danger: #e53935;
+
+    /* Fondo */
+    --bg-color: #fff3e0;
+    --bg-color-rgb: 255, 243, 224;
+    --bg-secondary-color: #ffe0b2;
+    --bg-card-color: #ffcc80;
+    --bg-hover-color: #ffb74d;
+
+    /* Colores de texto */
+    --text-color: #4e2600;
+    --text-secondary-color: #795548;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #d0f0c0;
+    --card-pending-bg: #ffc671;
+    --card-active-bg: #b7d6ffc7;
+
+    /* Bordes */
+    --border-color: #ff9800;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(255, 119, 0, 0.3);
+}
+
+[data-theme="green"] {
+    /* Colores principales */
+    --color-primary: #4caf50;
+    --color-primary-rgb: 76, 175, 80;
+    --color-active: #388e3c;
+    --color-success: #43a047;
+    --color-pending: #cddc39;
+    --color-danger: #d32f2f;
+
+    /* Fondo */
+    --bg-color: #e8f5e9;
+    --bg-color-rgb: 232, 245, 233;
+    --bg-secondary-color: #c8e6c9;
+    --bg-card-color: #a5d6a7;
+    --bg-hover-color: #81c784;
+
+    /* Colores de texto */
+    --text-color: #1b5e20;
+    --text-secondary-color: #2e7d32;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #d0f8ce;
+    --card-pending-bg: #f0f4c3;
+    --card-active-bg: #b2dfdb;
+
+    /* Bordes */
+    --border-color: #66bb6a;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+[data-theme="blue"] {
+    /* Colores principales */
+    --color-primary: #2196f3;
+    --color-primary-rgb: 33, 150, 243;
+    --color-active: #1976d2;
+    --color-success: #4caf50;
+    --color-pending: #ffeb3b;
+    --color-danger: #f44336;
+
+    /* Fondo */
+    --bg-color: #e3f2fd;
+    --bg-color-rgb: 227, 242, 253;
+    --bg-secondary-color: #bbdefb;
+    --bg-card-color: #90caf9;
+    --bg-hover-color: #64b5f6;
+
+    /* Colores de texto */
+    --text-color: #0d47a1;
+    --text-secondary-color: #1565c0;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #c8e6c9;
+    --card-pending-bg: #fff9c4;
+    --card-active-bg: #b3e5fc;
+
+    /* Bordes */
+    --border-color: #42a5f5;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+
 @font-face {
     font-family: 'Nunito-Regular';
     src: url('./assets/fonts/static/Nunito-Regular.ttf') format('truetype');

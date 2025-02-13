@@ -5,7 +5,7 @@
 
 .login-container {
     margin: 0 auto;
-    margin-top: var(--spacing-xxxlarge);
+    margin-top: var(--spacing-large);
     margin-bottom: var(--spacing-large);
     max-width: 400px;
     height: auto;

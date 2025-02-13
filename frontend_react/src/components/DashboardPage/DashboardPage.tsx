@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, getUserNotes } from '../../api';
-import './DashboardPage.css';
 import { CreateNoteModal } from './CreateNoteModal/CreateNoteModal';
 import { EditNoteModal } from './EditNoteModal/EditNoteModal';
-import { UserPannel } from './UserPannel/UserPannel';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
 import { LoaderComp } from '../Shared/LoaderComp/LoaderComp';
+import { ViewToggleButtons } from './ViewToggleButtons/ViewToggleButtons'; // Importamos el nuevo componente
+import './DashboardPage.css';
 
 interface User {
   id: number;
@@ -25,7 +25,7 @@ interface Note {
 export const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
-  const [selectedNote, setSelectedNote] = useState<Note | null>(null); // Nota seleccionada para editar
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export const DashboardPage: React.FC = () => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      navigate('/login');
+      navigate('/login', { state: { message: 'Inicia sesión, para acceder al dashboard.' } });
       return;
     }
 
@@ -46,9 +46,9 @@ export const DashboardPage: React.FC = () => {
         const userNotes = await getUserNotes(token);
         setNotes(userNotes);
       } catch (error) {
-        alert('Error al obtener los datos del usuario');
+        console.error('Error:', error instanceof Error ? error.message : 'Error desconocido');
         localStorage.removeItem('token');
-        navigate('/login');
+        navigate('/login', { state: { message: 'Tu sesión ha expirado. Inicia sesión nuevamente.' } });
       } finally {
         setLoading(false);
       }
@@ -62,6 +62,7 @@ export const DashboardPage: React.FC = () => {
   }
 
   if (!user) {
+    navigate('/login', { state: { message: 'Inicia sesión para acceder al dashboard.' } });
     return null;
   }
 
@@ -75,23 +76,8 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div className="dashboard-container">
-      <UserPannel user={user} />
-      <CreateNoteModal setNotes={setNotes} notes={notes} />
 
-      <div className="view-toggle-buttons">
-        <button
-          className={`button toggle-btn ${viewMode === 'list' ? 'active' : ''}`}
-          onClick={() => setViewMode('list')}
-        >
-          Lista
-        </button>
-        <button
-          className={`button toggle-btn ${viewMode === 'card' ? 'active' : ''}`}
-          onClick={() => setViewMode('card')}
-        >
-          Cards
-        </button>
-      </div>
+      <ViewToggleButtons viewMode={viewMode} setViewMode={setViewMode} notes={notes} setNotes={setNotes}/>
 
       {notes.length === 0 ? (
         <p className="no-notes-message">No tienes notas disponibles. ¡Crea tu primera nota!</p>
@@ -101,7 +87,6 @@ export const DashboardPage: React.FC = () => {
         <CardNote notes={notes} onNoteClick={handleNoteClick} />
       )}
 
-      {/* Modal para editar nota */}
       {selectedNote && (
         <EditNoteModal
           note={selectedNote}

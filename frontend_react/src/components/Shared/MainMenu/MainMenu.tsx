@@ -27,10 +27,10 @@ export const MainMenu = () => {
             <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
                 <NavLink to="/" className="button menu-link" onClick={closeMenu}>Landing</NavLink>
                 <NavLink to="/dashboard" className="button menu-link" onClick={closeMenu}>Dashboard</NavLink>
-                <ConfigComp />
+                <NavLink to="/userPannel" className="button menu-link" onClick={closeMenu}>Perfil</NavLink>
+                <NavLink to="/login" className="button menu-link" onClick={closeMenu}>Login</NavLink>
             </nav>
 
-            <NavLink to="/login" className="login-link">Login</NavLink>
 
             {/* Overlay */}
             {isMenuOpen && <div className="overlay" onClick={toggleMenu}></div>}

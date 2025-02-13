@@ -15,7 +15,7 @@ export const RegisterPage: React.FC = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setError(null);
-        setIsLoading(true); // Mostrar loader
+        setIsLoading(true);
 
         try {
             const { user, token } = await registerUser(name, email, password);
@@ -24,7 +24,7 @@ export const RegisterPage: React.FC = () => {
         } catch (error: any) {
             setError(error.response?.data?.message || 'Error en el registro');
         } finally {
-            setIsLoading(false); // Ocultar loader
+            setIsLoading(false);
         }
     };
 
@@ -38,7 +38,7 @@ export const RegisterPage: React.FC = () => {
                     {error && <p className="error-message">{error}</p>}
                     <form onSubmit={handleSubmit} className="register-form">
                         <div className="input-group">
-                            <label className="input-label">Nombre:</label>
+                            <label className="input-label">Nombre usuario:</label>
                             <input
                                 type="text"
                                 value={name}
