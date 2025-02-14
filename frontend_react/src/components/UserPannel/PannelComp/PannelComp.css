@@ -8,22 +8,6 @@
     margin: var(--spacing-xxlarge) auto;
 }
 
-.user-profile-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 2px solid var(--color-primary);
-}
-
 /* Oculta el input file original */
 .custom-file-input {
     display: none;
@@ -53,6 +37,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: var(--spacing-medium);
+}
+
+.profile-image-loader {
+    margin-bottom: var(--spacing-medium);
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-small);
+    border: 2px solid var(--color-primary);
 }
 
 .user-pannel-title {

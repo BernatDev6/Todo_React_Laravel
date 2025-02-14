@@ -10,9 +10,9 @@ interface Note {
 }
 
 interface ViewToggleButtonsProps {
-    viewMode: 'list' | 'card';
-    setViewMode: (mode: 'list' | 'card') => void;
-    notes: Note[],
+    viewMode: 'list' | 'card' | 'table';
+    setViewMode: (mode: 'list' | 'card' | 'table') => void;
+    notes: Note[];
     setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 }
 
@@ -32,11 +32,16 @@ export const ViewToggleButtons: React.FC<ViewToggleButtonsProps> = ({ viewMode, 
                 >
                     <i className="fa-regular fa-file"></i>
                 </button>
+                <button
+                    className={`button toggle-btn ${viewMode === 'table' ? 'active' : ''}`}
+                    onClick={() => setViewMode('table')}
+                >
+                    <i className="fa-solid fa-table"></i>
+                </button>
             </div>
             <div>
                 <CreateNoteModal setNotes={setNotes} notes={notes} />
             </div>
         </div>
-
     );
 };

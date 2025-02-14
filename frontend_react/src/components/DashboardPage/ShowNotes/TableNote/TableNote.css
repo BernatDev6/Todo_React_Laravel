@@ -1,0 +1,77 @@
+/* TableNote.css */
+
+.table-note-container {
+    background-color: var(--bg-secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-medium);
+    margin: var(--spacing-large) 0;
+}
+
+.notes-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+}
+
+.note-row {
+    cursor: pointer;
+}
+
+.note-row:hover {
+    background-color: var(--bg-color);
+}
+
+.notes-table th,
+.notes-table td {
+    padding: var(--spacing-medium);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notes-table th {
+    background-color: var(--bg-color);
+    font-weight: bold;
+}
+
+.note-row-content {
+    max-width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.note-row .note-row-status {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+}
+
+.note-row.activa .note-row-status {
+    background-color: var(--card-active-bg);
+}
+
+.note-row.pendiente .note-row-status {
+    background-color: var(--card-pending-bg);
+}
+
+.note-row.completada .note-row-status {
+    background-color: var(--card-success-bg);
+}
+
+.no-notes-message {
+    text-align: center;
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-large);
+    padding: var(--spacing-large);
+}
+
+@media (max-width: 600px) {
+    .content-col {
+        display: none;
+    }
+}

@@ -17,9 +17,6 @@
     /* Colores principales */
     --color-primary: #00c2e4;
     --color-primary-rgb: 0, 194, 228;
-    --color-active: #007bff;
-    --color-success: #28a745;
-    --color-pending: #ffc107;
     --color-danger: #ff6272;
 
     /* Fondo */
@@ -64,9 +61,6 @@
 
 [data-theme="dark"] {
     /* Colores principales */
-    --color-active: #4dabf7;
-    --color-success: #2ed573;
-    --color-pending: #ffa502;
     --color-danger: #ff6b6b;
 
     /* Fondo */
@@ -96,9 +90,6 @@
     /* Colores principales */
     --color-primary: #ffcc00;
     --color-primary-rgb: 255, 204, 0;
-    --color-active: #ffb300;
-    --color-success: #85c341;
-    --color-pending: #ff9800;
     --color-danger: #ff5252;
 
     /* Fondo */
@@ -128,9 +119,6 @@
     /* Colores principales */
     --color-primary: #ff7700;
     --color-primary-rgb: 255, 119, 0;
-    --color-active: #ff5500;
-    --color-success: #66bb6a;
-    --color-pending: #ffa726;
     --color-danger: #e53935;
 
     /* Fondo */
@@ -160,9 +148,6 @@
     /* Colores principales */
     --color-primary: #4caf50;
     --color-primary-rgb: 76, 175, 80;
-    --color-active: #388e3c;
-    --color-success: #43a047;
-    --color-pending: #cddc39;
     --color-danger: #d32f2f;
 
     /* Fondo */
@@ -192,9 +177,6 @@
     /* Colores principales */
     --color-primary: #2196f3;
     --color-primary-rgb: 33, 150, 243;
-    --color-active: #1976d2;
-    --color-success: #4caf50;
-    --color-pending: #ffeb3b;
     --color-danger: #f44336;
 
     /* Fondo */

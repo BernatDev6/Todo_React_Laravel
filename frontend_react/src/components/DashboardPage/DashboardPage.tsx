@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserData, getUserNotes } from '../../api';
-import { CreateNoteModal } from './CreateNoteModal/CreateNoteModal';
 import { EditNoteModal } from './EditNoteModal/EditNoteModal';
 import { ListNote } from './ShowNotes/ListNote/ListNote';
 import { CardNote } from './ShowNotes/CardNote/CardNote';
 import { LoaderComp } from '../Shared/LoaderComp/LoaderComp';
-import { ViewToggleButtons } from './ViewToggleButtons/ViewToggleButtons'; // Importamos el nuevo componente
+import { ViewToggleButtons } from './ViewToggleButtons/ViewToggleButtons';
+import { TableNote } from './ShowNotes/TableNote/TableNote';
+import { SearchAndFilterNotes } from './SearchAndFilterNotes/SearchAndFilterNotes';
 import './DashboardPage.css';
 
 interface User {
@@ -25,8 +26,9 @@ interface Note {
 export const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
+  const [filteredNotes, setFilteredNotes] = useState<Note[]>([]); // Nuevo estado para notas filtradas
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
-  const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
+  const [viewMode, setViewMode] = useState<'list' | 'card' | 'table'>('list');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -45,6 +47,7 @@ export const DashboardPage: React.FC = () => {
 
         const userNotes = await getUserNotes(token);
         setNotes(userNotes);
+        setFilteredNotes(userNotes); // Inicializa las notas filtradas
       } catch (error) {
         console.error('Error:', error instanceof Error ? error.message : 'Error desconocido');
         localStorage.removeItem('token');
@@ -56,6 +59,10 @@ export const DashboardPage: React.FC = () => {
 
     fetchUserData();
   }, [navigate]);
+
+  useEffect(() => {
+    setFilteredNotes(notes); // Sincroniza las notas filtradas con las notas originales
+  }, [notes]);
 
   if (loading) {
     return <LoaderComp />;
@@ -76,15 +83,21 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div className="dashboard-container">
+      
+      <ViewToggleButtons viewMode={viewMode} setViewMode={setViewMode} notes={notes} setNotes={setNotes} />
 
-      <ViewToggleButtons viewMode={viewMode} setViewMode={setViewMode} notes={notes} setNotes={setNotes}/>
+      <SearchAndFilterNotes notes={notes} onFilteredNotes={setFilteredNotes} />
 
-      {notes.length === 0 ? (
-        <p className="no-notes-message">No tienes notas disponibles. ¡Crea tu primera nota!</p>
+      {filteredNotes.length === 0 ? (
+        <p className="no-notes-message">No se han encontrado notas.</p>
       ) : viewMode === 'list' ? (
-        <ListNote notes={notes} setNotes={setNotes} onNoteClick={handleNoteClick} />
+        <ListNote notes={filteredNotes} setNotes={setNotes} onNoteClick={handleNoteClick} />
+      ) : viewMode === 'card' ? (
+        <CardNote notes={filteredNotes} onNoteClick={handleNoteClick} />
+      ) : viewMode === 'table' ? (
+        <TableNote notes={filteredNotes} onNoteClick={handleNoteClick} />
       ) : (
-        <CardNote notes={notes} onNoteClick={handleNoteClick} />
+        <p className="no-notes-message">No se han encontrado notas.</p>
       )}
 
       {selectedNote && (

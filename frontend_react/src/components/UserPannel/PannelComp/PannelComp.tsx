@@ -18,7 +18,6 @@ interface PannelCompProps {
 
 export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
     const [profileImage, setProfileImage] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
     const [isUploading, setIsUploading] = useState<boolean>(false); // Estado para el loader
 
     // Función para obtener la imagen del perfil
@@ -30,7 +29,6 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
             }
         } catch (error) {
             console.error('Error al obtener la imagen de perfil:', error);
-            setError('Error al cargar la imagen de perfil');
         }
     };
 
@@ -47,10 +45,8 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
             try {
                 await uploadProfileImage(file); // Subimos la imagen
                 await fetchProfileImage(); // Volvemos a obtener la imagen del servidor
-                setError(null); // Limpiar el error si la subida fue exitosa
             } catch (error) {
                 console.error('Error al subir la imagen de perfil:', error);
-                setError('Error al subir la imagen de perfil');
             } finally {
                 setIsUploading(false); // Desactivar el loader
             }
@@ -64,7 +60,9 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
                 {/* Imagen de perfil */}
                 <div className="user-profile-image">
                     {isUploading ? (
-                        <LoaderComp />
+                        <div className="profile-image-loader">
+                            <LoaderComp />
+                        </div>
                     ) : profileImage ? (
                         <img src={profileImage} alt="Foto de perfil" className="profile-img" />
                     ) : (
@@ -82,9 +80,6 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
                         className="custom-file-input"
                     />
                 </div>
-
-                {/* Mostrar errores */}
-                {error && <p className="error-message">{error}</p>}
 
                 {/* Información del usuario */}
                 <div className="user-info-item">
