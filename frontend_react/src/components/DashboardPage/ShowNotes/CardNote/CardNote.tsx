@@ -18,9 +18,8 @@ export const CardNote: React.FC<CardNoteProps> = ({ notes, onNoteClick }) => {
         <section className="note-cards-container">
             {notes.length > 0 ? (
                 notes.map((note) => (
-                    <article className="card-container">
+                    <article key={note.id} className="card-container">
                         <div
-                            key={note.id}
                             onClick={() => onNoteClick(note)}
                             className={`note-card ${note.status}`}
                         >

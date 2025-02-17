@@ -34,7 +34,7 @@ class ProfileController extends Controller
             $imageName = time() . '.' . $request->profile_image->getClientOriginalExtension();
             $request->profile_image->storeAs($userFolder, $imageName); // Guardar en la carpeta del usuario
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to upload image'], 500);
+            return response()->json(['error' => 'No se pudo cargar la imagen'], 500);
         }
 
         // Guardar la ruta en la base de datos
@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $user->save();
 
         return response()->json([
-            'message' => 'Profile image updated!',
+            'message' => 'Imagen del perfil actualizada!',
             'image' => Storage::url($userFolder . $imageName) // Generar URL pública
         ]);
     }
@@ -59,7 +59,7 @@ class ProfileController extends Controller
 
         // Verificar si la imagen existe
         if (!$user->profile_image || !Storage::exists($userFolder . $user->profile_image)) {
-            return response()->json(['error' => 'Image not found'], 404);
+            return response()->json(['error' => 'No se ha encontrado la imagen'], 404);
         }
 
         // Devolver la URL pública de la imagen

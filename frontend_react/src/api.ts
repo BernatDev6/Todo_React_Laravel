@@ -29,7 +29,7 @@ export const login = async (email: string, password: string):
             axios.post<LoginResponse>(`${API_URL}/login`, { email, password });
         return response.data.token;
     } catch (error: any) {
-        throw new Error(error.response?.data?.error || 'Login failed');
+        throw new Error(error.response?.data?.error || 'Error en el login.');
     }
 };
 
@@ -54,11 +54,7 @@ export const logout = async (): Promise<void> => {
  * @returns Los datos del usuario registrado junto con el token de 
 autenticación 
  */
-export const registerUser = async (
-    name: string,
-    email: string,
-    password: string
-): Promise<RegisterResponse> => {
+export const registerUser = async (name: string, email: string, password: string): Promise<RegisterResponse> => {
     const response = await
         axios.post<RegisterResponse>(`${API_URL}/register`, {
             name,
@@ -116,7 +112,7 @@ export const createNote = async (token: string, note: { title: string, content: 
  */
 export const updateNote = async (noteId: number, updatedNote: { title: string; content: string; status: 'pendiente' | 'activa' | 'completada' }) => {
     const token = localStorage.getItem('token');
-    if (!token) throw new Error('No token found');
+    if (!token) throw new Error('No se ha encontrado el token');
 
     const response = await axios.put(
         `${API_URL}/notes/${noteId}`,
@@ -133,7 +129,7 @@ export const updateNote = async (noteId: number, updatedNote: { title: string; c
  */
 export const deleteNote = async (noteId: number) => {
     const token = localStorage.getItem('token');
-    if (!token) throw new Error('No token found');
+    if (!token) throw new Error('No se ha encontrado el token');
 
     const response = await axios.delete(
         `${API_URL}/notes/${noteId}`,
@@ -149,7 +145,7 @@ export const deleteNote = async (noteId: number) => {
  */
 export const getProfileImage = async (): Promise<string | null> => {
     const token = localStorage.getItem('token');
-    if (!token) throw new Error('No token found');
+    if (!token) throw new Error('No se ha encontrado el token');
 
     try {
         const response = await axios.get(`${API_URL}/profile/image`, {
@@ -178,7 +174,7 @@ export const getProfileImage = async (): Promise<string | null> => {
  */
 export const uploadProfileImage = async (file: File): Promise<string> => {
     const token = localStorage.getItem('token');
-    if (!token) throw new Error('No token found');
+    if (!token) throw new Error('No se ha encontrado el token');
 
     try {
         const formData = new FormData();

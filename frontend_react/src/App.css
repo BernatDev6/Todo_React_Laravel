@@ -202,6 +202,35 @@
     --box-shadow: 0px 4px 8px rgba(33, 150, 243, 0.3);
 }
 
+[data-theme="pink"] {
+    /* Colores principales */
+    --color-primary: #e91e63;
+    --color-primary-rgb: 233, 30, 99;
+    --color-danger: #f44336;
+
+    /* Fondo */
+    --bg-color: #fce4ec;
+    --bg-color-rgb: 252, 228, 236;
+    --bg-secondary-color: #f8bbd0;
+    --bg-card-color: #f48fb1;
+    --bg-hover-color: #f06292;
+
+    /* Colores de texto */
+    --text-color: #880e4f;
+    --text-secondary-color: #ad1457;
+
+    /* Colores para cards según estado */
+    --card-success-bg: #f1f8e9;
+    --card-pending-bg: #fff8e1;
+    --card-active-bg: #ffd1e1;
+
+    /* Bordes */
+    --border-color: #ec407a;
+
+    /* Sombras */
+    --box-shadow: 0px 4px 8px rgba(233, 30, 99, 0.3);
+}
+
 
 @font-face {
     font-family: 'Nunito-Regular';

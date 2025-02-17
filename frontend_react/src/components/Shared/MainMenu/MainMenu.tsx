@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { ConfigComp } from '../ConfigComp/ConfigComp';
 import './MainMenu.css';
 
 export const MainMenu = () => {
@@ -25,8 +24,8 @@ export const MainMenu = () => {
                 <FontAwesomeIcon icon={faBars} />
             </div>
             <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
-                <NavLink to="/" className="button menu-link" onClick={closeMenu}>Landing</NavLink>
-                <NavLink to="/dashboard" className="button menu-link" onClick={closeMenu}>Dashboard</NavLink>
+                <NavLink to="/" className="button menu-link" onClick={closeMenu}>Inicio</NavLink>
+                <NavLink to="/dashboard" className="button menu-link" onClick={closeMenu}>Notas</NavLink>
                 <NavLink to="/userPannel" className="button menu-link" onClick={closeMenu}>Perfil</NavLink>
                 <NavLink to="/login" className="button menu-link" onClick={closeMenu}>Login</NavLink>
             </nav>

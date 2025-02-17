@@ -19,7 +19,7 @@ export const LoginPage: React.FC = () => {
         setIsLoading(true);
         try {
             const token = await login(email, password);
-            if (!token) throw new Error("No token received");
+            if (!token) throw new Error("No se ha recivido el token");
 
             localStorage.setItem('token', token);
 
@@ -63,7 +63,7 @@ export const LoginPage: React.FC = () => {
                             />
                         </div>
                         <button type="submit" className="button submit-btn">Login</button>
-                        <Link to="/register">Register</Link>
+                        <Link to="/register">Registro</Link>
                     </form>
                 </div>
             )}

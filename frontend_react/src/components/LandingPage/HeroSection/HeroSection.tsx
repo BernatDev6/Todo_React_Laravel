@@ -25,7 +25,7 @@ export const HeroSection = () => {
                     Crea, guarda y accede a tus notas en cualquier momento. Tu espacio personal para todo lo que necesitas recordar, desde tareas diarias hasta ideas importantes. ¡Empieza ahora y mantén todo bajo control!
                 </p>
                 <button onClick={handleDashboardClick} className="button hero-button">
-                    Dashboard
+                    Mis Notas
                 </button>
             </div>
         </section>

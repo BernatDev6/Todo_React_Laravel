@@ -1,11 +1,11 @@
-/* TableNote.css */
-
 .table-note-container {
     background-color: var(--bg-secondary-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     padding: var(--spacing-medium);
     margin: var(--spacing-large) 0;
+    overflow-x: auto;
+    max-width: 100%;
 }
 
 .notes-table {
@@ -13,6 +13,7 @@
     border-collapse: collapse;
     font-size: var(--font-size-base);
     color: var(--text-color);
+    min-width: 600px;
 }
 
 .note-row {

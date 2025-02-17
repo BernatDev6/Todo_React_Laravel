@@ -20,16 +20,16 @@ export const TableNote: React.FC<TableNoteProps> = ({ notes, onNoteClick }) => {
                 <table className="notes-table">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th className="content-col">Content</th>
-                            <th>Status</th>
+                            <th>Título</th>
+                            <th>Contienido</th>
+                            <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody>
                         {notes.map((note) => (
                             <tr key={note.id} onClick={() => onNoteClick(note)} className={`note-row ${note.status}`}>
                                 <td>{note.title}</td>
-                                <td className="content-col"><div className="note-row-content">{note.content}</div></td>
+                                <td><div className="note-row-content">{note.content}</div></td>
                                 <td><span className="note-row-status">{note.status}</span></td>
                             </tr>
                         ))}

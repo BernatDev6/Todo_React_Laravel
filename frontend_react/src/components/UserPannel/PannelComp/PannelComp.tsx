@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getProfileImage, uploadProfileImage } from '../../../api';
 import { ConfigComp } from '../../Shared/ConfigComp/ConfigComp';
 import NoUserImage from '../../../assets/images/no-user-image.webp';
-import { LoaderComp } from '../../Shared/LoaderComp/LoaderComp';
+import { Loader2Comp } from '../../Shared/Loader2Comp/Loader2Comp';
 
 import './PannelComp.css';
 
@@ -18,7 +18,7 @@ interface PannelCompProps {
 
 export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
     const [profileImage, setProfileImage] = useState<string | null>(null);
-    const [isUploading, setIsUploading] = useState<boolean>(false); // Estado para el loader
+    const [isUploading, setIsUploading] = useState<boolean>(true); // Estado para el loader
 
     // Función para obtener la imagen del perfil
     const fetchProfileImage = async () => {
@@ -26,6 +26,7 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
             const imageUrl = await getProfileImage();
             if (imageUrl) {
                 setProfileImage(`${imageUrl}?t=${Date.now()}`); // Evitar caché
+                setIsUploading(false); // Desactivar el loader
             }
         } catch (error) {
             console.error('Error al obtener la imagen de perfil:', error);
@@ -61,7 +62,7 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
                 <div className="user-profile-image">
                     {isUploading ? (
                         <div className="profile-image-loader">
-                            <LoaderComp />
+                            <Loader2Comp size='90' />
                         </div>
                     ) : profileImage ? (
                         <img src={profileImage} alt="Foto de perfil" className="profile-img" />
@@ -82,10 +83,6 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
                 </div>
 
                 {/* Información del usuario */}
-                <div className="user-info-item">
-                    <span className="user-info-label">ID:</span>
-                    <span className="user-info-value">{user.id}</span>
-                </div>
                 <div className="user-info-item">
                     <span className="user-info-label">Nombre usuario:</span>
                     <span className="user-info-value">{user.name}</span>

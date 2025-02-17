@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { LoaderComp } from '../Shared/LoaderComp/LoaderComp';
 import { PannelComp } from './PannelComp/PannelComp';
 import './UserPannel.css';
+import { UserNotesInfo } from './UserNotesInfo/UserNotesInfo';
 
 interface User {
   id: number;
@@ -42,6 +43,7 @@ export const UserPannel: React.FC = () => {
   return (
     <div className="user-pannel-container">
         <PannelComp user={user} />
+        <UserNotesInfo />
     </div>
   );
 };

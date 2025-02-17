@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Definimos un tipo para los temas disponibles
-type Theme = 'light' | 'dark' | 'yellow' | 'orange' | 'green' | 'blue'; // Puedes agregar más temas aquí
+type Theme = 'light' | 'dark' | 'yellow' | 'orange' | 'green' | 'blue' | 'pink'; // Puedes agregar más temas aquí
 
 interface ThemeContextType {
   theme: Theme;

@@ -30,6 +30,10 @@
     background-image: url(../../../assets/images/bg-hero-blue.svg);
 }
 
+.hero.pink {
+    background-image: url(../../../assets/images/bg-hero-pink.svg);
+}
+
 .hero-content {
     color: var(--text-color);
     max-width: 800px;

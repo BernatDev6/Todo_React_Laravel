@@ -45,7 +45,7 @@ export const SearchAndFilterNotes: React.FC<SearchAndFilterNotesProps> = ({ note
         onChange={(e) => setFilterStatus(e.target.value as 'all' | 'activa' | 'pendiente' | 'completada')}
         className="filter-select"
       >
-        <option value="all">Todos</option>
+        <option value="all">Todas</option>
         <option value="activa">Activas</option>
         <option value="pendiente">Pendientes</option>
         <option value="completada">Completadas</option>

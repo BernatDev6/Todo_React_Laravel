@@ -4,7 +4,7 @@ import './ThemeSwitcher.css';
 
 export const ThemeSwitcher: FC = () => {
   // Definimos un tipo para los temas disponibles
-  type Theme = 'light' | 'dark' | 'yellow' | 'orange' | 'green' | 'blue'; // Puedes agregar más temas aquí
+  type Theme = 'light' | 'dark' | 'yellow' | 'orange' | 'green' | 'blue' | 'pink';
 
   const { theme, setTheme } = useTheme(); // Usamos setTheme del contexto
 
@@ -16,6 +16,7 @@ export const ThemeSwitcher: FC = () => {
     { value: 'orange', label: 'Orange' },
     { value: 'green', label: 'Green' },
     { value: 'blue', label: 'Blue' },
+    { value: 'pink', label: 'Pink' },
   ];
 
   // Maneja el cambio de tema
