@@ -7,26 +7,21 @@ import { LandingPage } from '../components/LandingPage/LandingPage';
 import { UserPannel } from '../components/UserPannel/UserPannel';
 import { PrivacyPolicy } from '../components/SeguridadProteccionDatos/ProtectedData';
 import { LegalNotice } from '../components/SeguridadProteccionDatos/ProtectedData';
+import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
 
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-
       <Route path="/" element={<LandingPage />} />
-
       <Route path="/login" element={<LoginPage />} />
-
       <Route path="/register" element={<RegisterPage />} />
-
       <Route path="/userPannel" element={<UserPannel />} />
-      
       <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-
       <Route path="/legalNotice" element={<LegalNotice />} />
-
       <Route element={<PrivateRoute />}>
         <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }; 
