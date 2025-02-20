@@ -28,7 +28,7 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
             console.log("URL de la imagen recibida:", imageUrl);
             if (imageUrl) {
                 const fullImageUrl = `${imageUrl}?t=${new Date().getTime()}`;
-                setProfileImage(imageUrl);
+                setProfileImage(fullImageUrl);
                                
             }
         } catch (error) {
