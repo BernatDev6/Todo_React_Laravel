@@ -5,66 +5,75 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth; // Importamos JWTAuth para autenticación
 
 class ProfileController extends Controller
 {
+    /**
+     * Subir una nueva imagen de perfil
+     */
     public function uploadProfileImage(Request $request)
     {
-        // Validar que el usuario esté autenticado
-        if (!$user = JWTAuth::parseToken()->authenticate()) {
+        // Obtener el usuario autenticado desde el token JWT
+        $user = JWTAuth::parseToken()->authenticate();
+        if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        // Validar la imagen recibida
+        // Validar que la solicitud incluya una imagen válida
         $request->validate([
-            'profile_image' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048'
+            'profile_image' => 'required|image|mimes:jpg,png,jpeg,gif|max:4096'
         ]);
 
-        // Carpeta específica para el usuario
-        $userFolder = 'profile_images/' . $user->id . '/';
+        // Carpeta donde se almacenará la imagen (cada usuario tiene su propia carpeta)
+        $userFolder = 'avatar/' . $user->id . '/';
 
-        // Eliminar la imagen anterior si existe
-        if ($user->profile_image && Storage::exists($userFolder . $user->profile_image)) {
-            Storage::delete($userFolder . $user->profile_image);
+        // Si el usuario ya tiene una imagen guardada, eliminarla antes de subir la nueva
+        if ($user->profile_image) {
+            Storage::disk('public')->delete($userFolder . $user->profile_image);
         }
 
-        // Guardar la nueva imagen
+        // Guardar la nueva imagen con un nombre único basado en el timestamp
         try {
-            $imageName = time() . '.' . $request->profile_image->getClientOriginalExtension();
-            $request->profile_image->storeAs($userFolder, $imageName); // Guardar en la carpeta del usuario
+            $imageName = time() . '.' . $request->file('profile_image')->getClientOriginalExtension();
+            $request->file('profile_image')->storeAs($userFolder, $imageName, 'public');
         } catch (\Exception $e) {
             return response()->json(['error' => 'No se pudo cargar la imagen'], 500);
         }
 
-        // Guardar la ruta en la base de datos
+        // Guardar el nombre de la imagen en la base de datos del usuario
         $user->profile_image = $imageName;
         $user->save();
 
+        // Responder con un mensaje y la URL pública de la imagen
         return response()->json([
             'message' => 'Imagen del perfil actualizada!',
-            'image' => Storage::url($userFolder . $imageName) // Generar URL pública
+            'image' => asset("storage/$userFolder$imageName")
         ]);
     }
 
+    /**
+     * Obtener la URL de la imagen de perfil del usuario autenticado
+     */
     public function getProfileImage()
     {
-        // Validar que el usuario esté autenticado
-        if (!$user = JWTAuth::parseToken()->authenticate()) {
+        // Obtener el usuario autenticado desde el token JWT
+        $user = JWTAuth::parseToken()->authenticate();
+        if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        // Carpeta específica del usuario
-        $userFolder = 'profile_images/' . $user->id . '/';
+        // Carpeta donde se almacena la imagen del usuario
+        $userFolder = 'avatar/' . $user->id . '/';
 
-        // Verificar si la imagen existe
-        if (!$user->profile_image || !Storage::exists($userFolder . $user->profile_image)) {
+        // Verificar si el usuario tiene una imagen de perfil almacenada
+        if (!$user->profile_image || !Storage::disk('public')->exists($userFolder . $user->profile_image)) {
             return response()->json(['error' => 'No se ha encontrado la imagen'], 404);
         }
 
         // Devolver la URL pública de la imagen
         return response()->json([
-            'profile_image' => Storage::url($userFolder . $user->profile_image)
+            'profile_image' => asset("storage/$userFolder" . $user->profile_image)
         ]);
     }
 }

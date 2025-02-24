@@ -23,33 +23,47 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
     // Función para obtener la imagen del perfil
     const fetchProfileImage = async () => {
         try {
+            setIsUploading(true); // Activar loader antes de la petición
             const imageUrl = await getProfileImage();
+            console.log("URL de la imagen recibida:", imageUrl);
             if (imageUrl) {
-                setProfileImage(`${imageUrl}?t=${Date.now()}`); // Evitar caché
-                setIsUploading(false); // Desactivar el loader
+                const fullImageUrl = `${imageUrl}?t=${new Date().getTime()}`;
+                setProfileImage(fullImageUrl);
+                               
             }
         } catch (error) {
             console.error('Error al obtener la imagen de perfil:', error);
+        } finally {
+            setIsUploading(false); // Asegurar que el loader se desactive siempre
         }
     };
+
 
     // Cargar la imagen cuando el componente se monta
     useEffect(() => {
         fetchProfileImage();
-    }, []);
+    }, [user.id]);
 
     // Manejar la subida de imagen
     const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-            setIsUploading(true); // Activar el loader
+
+            // Validar tipo de archivo
+            if (!file.type.startsWith("image/")) {
+                console.error("El archivo seleccionado no es una imagen.");
+                alert("Por favor, selecciona un archivo de imagen válido.");
+                return;
+            }
+
+            setIsUploading(true);
             try {
-                await uploadProfileImage(file); // Subimos la imagen
-                await fetchProfileImage(); // Volvemos a obtener la imagen del servidor
+                await uploadProfileImage(file);
+                await fetchProfileImage();
             } catch (error) {
-                console.error('Error al subir la imagen de perfil:', error);
+                console.error("Error al subir la imagen de perfil:", error);
             } finally {
-                setIsUploading(false); // Desactivar el loader
+                setIsUploading(false);
             }
         }
     };
@@ -62,12 +76,14 @@ export const PannelComp: React.FC<PannelCompProps> = ({ user }) => {
                 <div className="user-profile-image">
                     {isUploading ? (
                         <div className="profile-image-loader">
-                            <Loader2Comp size='90' />
+                            <Loader2Comp size="90" />
                         </div>
-                    ) : profileImage ? (
-                        <img src={profileImage} alt="Foto de perfil" className="profile-img" />
                     ) : (
-                        <img src={NoUserImage} alt="no-img-profile-img" className="profile-img" />
+                        <img
+                            src={profileImage || NoUserImage}
+                            alt="Foto de perfil"
+                            className="profile-img"
+                        />
                     )}
 
                     <label htmlFor="file-upload" className="custom-file-label">
