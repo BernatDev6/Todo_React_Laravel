@@ -5,10 +5,10 @@ import { Loader2Comp } from '../../Shared/Loader2Comp/Loader2Comp';
 
 // Definición de la interfaz Note
 interface Note {
-  id: number;
-  title: string;
-  content: string;
-  status: 'activa' | 'pendiente' | 'completada';
+    id: number;
+    title: string;
+    content: string;
+    status: 'activa' | 'pendiente' | 'completada';
 }
 
 export const UserNotesInfo: React.FC = () => {
@@ -22,11 +22,18 @@ export const UserNotesInfo: React.FC = () => {
         setLoading(true); // Activar loading antes de la llamada
         getUserNotes(token)
             .then(data => {
-                setNotes(data);
+                // Asegúrate de que data sea un array
+                if (Array.isArray(data)) {
+                    setNotes(data);
+                } else {
+                    console.error('Expected an array but got:', data);
+                    setNotes([]); // Inicializa notes como un array vacío en caso de error
+                }
                 setLoading(false); // Desactivar loading después de obtener los datos
             })
             .catch(error => {
                 console.error('Error fetching user notes:', error);
+                setNotes([]); // Inicializa notes como un array vacío en caso de error
                 setLoading(false); // Desactivar loading en caso de error
             });
     }
@@ -35,9 +42,10 @@ export const UserNotesInfo: React.FC = () => {
         fetchUserNotes();
     }, []);
 
-    const activeNotes = notes.filter(note => note.status === 'activa').length;
-    const pendingNotes = notes.filter(note => note.status === 'pendiente').length;
-    const completedNotes = notes.filter(note => note.status === 'completada').length;
+    // Verifica que notes sea un array antes de usar filter
+    const activeNotes = Array.isArray(notes) ? notes.filter(note => note.status === 'activa').length : 0;
+    const pendingNotes = Array.isArray(notes) ? notes.filter(note => note.status === 'pendiente').length : 0;
+    const completedNotes = Array.isArray(notes) ? notes.filter(note => note.status === 'completada').length : 0;
 
     return (
         <div className="user-notes-info-container">

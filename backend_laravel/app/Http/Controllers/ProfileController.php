@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
         // Validar que la solicitud incluya una imagen válida
         $request->validate([
-            'profile_image' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048'
+            'profile_image' => 'required|image|mimes:jpg,png,jpeg,gif|max:4096'
         ]);
 
         // Carpeta donde se almacenará la imagen (cada usuario tiene su propia carpeta)
