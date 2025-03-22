@@ -36,6 +36,7 @@ class ProfileController extends Controller
         // Guardar la nueva imagen con un nombre único basado en el timestamp
         try {
             $imageName = time() . '.' . $request->file('profile_image')->getClientOriginalExtension();
+            // Almacena la imagen en la carpeta específica del usuario ($userFolder) con el nombre definido ($imageName) en el disco público
             $request->file('profile_image')->storeAs($userFolder, $imageName, 'public');
         } catch (\Exception $e) {
             return response()->json(['error' => 'No se pudo cargar la imagen'], 500);

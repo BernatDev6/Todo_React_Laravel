@@ -4,6 +4,19 @@
 
 ---
 
+## 🖼 Vista previa de la aplicación
+
+### 🏠 Página de inicio  
+![Home](frontend_react/assets/home.avif)
+
+### 📋 Panel de notas (Dashboard)  
+![Dashboard](frontend_react/assets/dashboard.avif)
+
+### 👤 Perfil de usuario  
+![Perfil](frontend_react/assets/perfil.avif)
+
+---
+
 ## Características principales
 
 - **Registro y autenticación de usuarios**:
